@@ -235,6 +235,14 @@ export const MapPlaceholder = styled.div`
   color: #616772ff;
   font-size: 1.125rem;
   border: 2px dashed #d1d5db;
+
+    iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(10%) contrast(95%);
+  }
+
 `;
 
 export const HoursSection = styled.div`
