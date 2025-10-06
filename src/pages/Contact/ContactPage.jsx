@@ -57,9 +57,9 @@ export default function ContactPage() {
                 <InfoContent>
                   <InfoLabel>Endereço</InfoLabel>
                   <InfoText>
-                    Rua das Oficinas, 123<br />
-                    Bairro Industrial<br />
-                    São Paulo, SP - CEP: 01234-567
+                    Rua São Paulo 1801,<br />
+                    Campos Elíseos<br />
+                    Ribeirão Preto, SP
                   </InfoText>
                 </InfoContent>
               </InfoItem>
