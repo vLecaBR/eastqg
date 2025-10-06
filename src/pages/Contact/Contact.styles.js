@@ -143,6 +143,7 @@ export const Input = styled.input`
   border-radius: 0.5rem;
   font-size: 0.875rem;
   transition: all 0.2s;
+  background-color: white;
   &:focus {
     outline: none;
     border-color: #0d7377;
