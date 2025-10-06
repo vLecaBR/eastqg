@@ -150,7 +150,7 @@ export const Input = styled.input`
     box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
   }
   &::placeholder {
-    color: #9ca3af;
+    color: #616772ff;
   }
 `;
 
@@ -176,13 +176,14 @@ export const TextArea = styled.textarea`
   resize: vertical;
   min-height: 5rem;
   transition: all 0.2s;
+  background-color: white;
   &:focus {
     outline: none;
     border-color: #0d7377;
     box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
   }
   &::placeholder {
-    color: #9ca3af;
+    color: #616772ff;
   }
 `;
 
@@ -231,7 +232,7 @@ export const MapPlaceholder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b7280;
+  color: #616772ff;
   font-size: 1.125rem;
   border: 2px dashed #d1d5db;
 `;
