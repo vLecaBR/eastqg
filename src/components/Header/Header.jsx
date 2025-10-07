@@ -32,6 +32,7 @@ export default function Header({ onNavigate, quoteCount, savedCount, currentPage
 
           <DesktopNav>
             <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('home')}>Início</NavButton>
+            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('products')}>Produtos</NavButton>
             <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('services')}>Serviços</NavButton>
             <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('about')}>Sobre</NavButton>
             <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('contact')}>Contato</NavButton>
@@ -54,6 +55,7 @@ export default function Header({ onNavigate, quoteCount, savedCount, currentPage
           <CloseButton onClick={() => setMobileMenuOpen(false)}>×</CloseButton>
           <MobileNavButtons>
             <MobileNavButton onClick={() => handleNavigate('home')}>Início</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('products')}>Produtos</MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('services')}>Serviços</MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('about')}>Sobre</MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('contact')}>Contato</MobileNavButton>
