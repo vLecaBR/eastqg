@@ -149,15 +149,14 @@ export default function App() {
       case 'products':
         return (
           <ProductsPage
-            products={products}
             favoriteProducts={favoriteProducts}
             cart={cart}
             onViewDetails={() => {}}
             onToggleFavorite={handleToggleFavoriteProduct}
             onAddToCart={handleAddToCart}
           />
-
         );
+
 
       case 'saved':
         return (
