@@ -11,7 +11,6 @@ import AboutPage from './pages/About/AboutPage.jsx';
 import ContactPage from './pages/Contact/ContactPage.jsx';
 import ProductsPage from './pages/Products/Products.jsx';
 import { services } from './data/services.js';
-import { products } from './data/products.js';
 import { useLocalStorage } from './hooks/useLocalStorage.js';
 
 const AppContainer = styled.div`
