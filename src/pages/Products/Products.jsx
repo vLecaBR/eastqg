@@ -12,7 +12,7 @@ export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToC
     async function fetchProducts() {
       try {
         setLoading(true);
-        const res = await fetch('http://localhost:3000/api/products'); // ajusta a URL pro backend
+        const res = await fetch('https://eastqg-backend-y6r1.onrender.com/api/products'); // ajusta a URL pro backend
         if (!res.ok) throw new Error('Erro ao carregar produtos');
         const data = await res.json();
         setProducts(data);
