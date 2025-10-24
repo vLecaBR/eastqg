@@ -9,6 +9,9 @@ export const CardContainer = styled.div`
   cursor: pointer;
   transition: all 0.3s ease;
 
+  max-width: 350px; /* Limita o tamanho do card */
+  width: 100%;
+
   &:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     border-color: #14a085;
@@ -18,7 +21,7 @@ export const CardContainer = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
-  height: 14rem;
+  height: 180px;
   overflow: hidden;
   background: #f3f4f6;
 `;
@@ -48,7 +51,7 @@ export const FeaturedBadge = styled.div`
 `;
 
 export const CardContent = styled.div`
-  padding: 1.25rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
 `;
@@ -57,20 +60,19 @@ export const CategoryBadge = styled.span`
   display: inline-block;
   background: #ecfdf5;
   color: #0d7377;
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   border: 1px solid #bbf7d0;
 `;
 
 export const ProductName = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #1f2937;
   margin-bottom: 0.5rem;
-  transition: color 0.2s;
 
   ${CardContainer}:hover & {
     color: #0d7377;
@@ -79,9 +81,9 @@ export const ProductName = styled.h3`
 
 export const ProductLink = styled.a`
   color: #0d7377;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-decoration: none;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 
   &:hover {
     text-decoration: underline;
@@ -93,27 +95,27 @@ export const ProductInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
   border-top: 1px solid #f3f4f6;
 `;
 
 export const Price = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: #0d7377;
 `;
 
 export const ActionButtons = styled.div`
   display: flex;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 `;
 
 export const PrimaryButton = styled.button`
   flex: 1;
   background: #0d7377;
   color: white;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.2s;
@@ -126,15 +128,15 @@ export const PrimaryButton = styled.button`
 `;
 
 export const IconButton = styled.button`
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   background: ${(props) => {
     if (props.favorite) return '#dc2626';

@@ -9,24 +9,31 @@ export default function ProductCard({
   isFavorite,
   isInCart,
 }) {
+  // Clique no card, mas ignora botões e links
   const handleCardClick = (e) => {
-    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+    if (['BUTTON', 'A'].includes(e.target.tagName)) return;
     onViewDetails(product.id);
   };
+
+  // Fallback para imagem
+  const imageSrc = product.image || product.thumbnail || '/placeholder.png';
 
   return (
     <S.CardContainer onClick={handleCardClick}>
       <S.ImageContainer>
         <S.ProductImage
-          src={product.image || '/placeholder.png'}
-          alt={product.title}
+          src={imageSrc}
+          alt={product.title || 'Produto'}
           onError={(e) => (e.target.src = '/placeholder.png')}
         />
         {product.featured && <S.FeaturedBadge>🔥 Destaque</S.FeaturedBadge>}
       </S.ImageContainer>
 
       <S.CardContent>
-        <S.CategoryBadge>{product.condition === 'used' ? 'Usado' : 'Novo'}</S.CategoryBadge>
+        <S.CategoryBadge>
+          {product.condition === 'used' ? 'Usado' : 'Novo'}
+        </S.CategoryBadge>
+
         <S.ProductName>{product.title}</S.ProductName>
 
         {product.link && (
@@ -41,7 +48,7 @@ export default function ProductCard({
         )}
 
         <S.ProductInfo>
-          <S.Price>R$ {Number(product.price).toFixed(2)}</S.Price>
+          <S.Price>R$ {Number(product.price ?? 0).toFixed(2)}</S.Price>
         </S.ProductInfo>
 
         <S.ActionButtons>
