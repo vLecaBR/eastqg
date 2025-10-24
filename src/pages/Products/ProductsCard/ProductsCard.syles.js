@@ -18,7 +18,7 @@ export const CardContainer = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
-  height: 12rem;
+  height: 14rem;
   overflow: hidden;
   background: #f3f4f6;
 `;
@@ -26,7 +26,7 @@ export const ImageContainer = styled.div`
 export const ProductImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.3s ease;
 
   ${CardContainer}:hover & {
@@ -48,7 +48,9 @@ export const FeaturedBadge = styled.div`
 `;
 
 export const CardContent = styled.div`
-  padding: 1.5rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CategoryBadge = styled.span`
@@ -64,7 +66,7 @@ export const CategoryBadge = styled.span`
 `;
 
 export const ProductName = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
   margin-bottom: 0.5rem;
@@ -75,22 +77,22 @@ export const ProductName = styled.h3`
   }
 `;
 
-export const ProductDescription = styled.p`
-  color: #6b7280;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+export const ProductLink = styled.a`
+  color: #0d7377;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ProductInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid #f3f4f6;
 `;
@@ -104,6 +106,7 @@ export const Price = styled.div`
 export const ActionButtons = styled.div`
   display: flex;
   gap: 0.75rem;
+  margin-top: 1rem;
 `;
 
 export const PrimaryButton = styled.button`

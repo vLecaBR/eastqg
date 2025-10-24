@@ -10,24 +10,38 @@ export default function ProductCard({
   isInCart,
 }) {
   const handleCardClick = (e) => {
-    if (e.target.tagName === 'BUTTON') return;
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
     onViewDetails(product.id);
   };
 
   return (
     <S.CardContainer onClick={handleCardClick}>
       <S.ImageContainer>
-        <S.ProductImage src={product.image} alt={product.name} />
+        <S.ProductImage
+          src={product.image || '/placeholder.png'}
+          alt={product.title}
+          onError={(e) => (e.target.src = '/placeholder.png')}
+        />
         {product.featured && <S.FeaturedBadge>🔥 Destaque</S.FeaturedBadge>}
       </S.ImageContainer>
 
       <S.CardContent>
-        <S.CategoryBadge>{product.category}</S.CategoryBadge>
-        <S.ProductName>{product.name}</S.ProductName>
-        <S.ProductDescription>{product.description}</S.ProductDescription>
+        <S.CategoryBadge>{product.condition === 'used' ? 'Usado' : 'Novo'}</S.CategoryBadge>
+        <S.ProductName>{product.title}</S.ProductName>
+
+        {product.link && (
+          <S.ProductLink
+            href={product.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Ver no Mercado Livre ↗
+          </S.ProductLink>
+        )}
 
         <S.ProductInfo>
-          <S.Price>R$ {product.price.toFixed(2)}</S.Price>
+          <S.Price>R$ {Number(product.price).toFixed(2)}</S.Price>
         </S.ProductInfo>
 
         <S.ActionButtons>

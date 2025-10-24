@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductsCard/ProductsCard.jsx';
 import * as S from './Products.styles';
 
-
-export default function ProductsPage({ 
-  products, 
-  onViewDetails, 
-  onToggleFavorite, 
-  onAddToCart, 
-  favoriteProducts, 
-  cart 
-}) {
+export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToCart, favoriteProducts, cart }) {
+  const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const categories = ['Todos', ...new Set(products.map(product => product.category))];
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        const res = await fetch('http://localhost:3000/api/products'); // ajusta a URL pro backend
+        if (!res.ok) throw new Error('Erro ao carregar produtos');
+        const data = await res.json();
+        setProducts(data);
+      } catch (err) {
+        console.error('Erro ao carregar produtos:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  const filteredProducts = selectedCategory === 'Todos'
-    ? products
-    : products.filter(product => product.category === selectedCategory);
+    fetchProducts();
+  }, []);
+
+  const categories = ['Todos', ...new Set(products.map((p) => p.category))];
+
+  const filteredProducts =
+    selectedCategory === 'Todos'
+      ? products
+      : products.filter((product) => product.category === selectedCategory);
+
+  if (loading) {
+    return <S.PageContainer>Carregando produtos...</S.PageContainer>;
+  }
+
+  if (error) {
+    return <S.PageContainer>Erro: {error}</S.PageContainer>;
+  }
 
   return (
     <S.PageContainer>
@@ -30,7 +53,7 @@ export default function ProductsPage({
         </S.PageHeader>
 
         <S.FilterSection>
-          {categories.map(category => (
+          {categories.map((category) => (
             <S.FilterButton
               key={category}
               active={selectedCategory === category}
@@ -43,7 +66,7 @@ export default function ProductsPage({
 
         {filteredProducts.length > 0 ? (
           <S.ProductsGrid>
-            {filteredProducts.map(product => (
+            {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
