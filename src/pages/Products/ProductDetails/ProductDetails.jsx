@@ -1,20 +1,57 @@
+// ProductDetails.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import styled from 'styled-components';
+import * as S from './ProductDetails.styles';
 
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchProduct() {
+      setLoading(true);
+      setError(null);
+
       try {
-        const res = await fetch(`https://api.mercadolibre.com/items/${id}`);
+        // Busca no teu backend (recomendo manter a rota /api/product/:id)
+        const res = await fetch(`/api/product/${id}`);
+        if (!res.ok) throw new Error('Erro ao buscar produto');
         const data = await res.json();
-        setProduct(data);
+
+        // Alguns endpoints do ML não trazem texto de descrição direto.
+        // Tentamos extrair um texto útil:
+        let descriptionText = null;
+        if (data.plain_text) descriptionText = data.plain_text;
+        else if (data.description) {
+          // pode ser objeto ou string
+          if (typeof data.description === 'string') descriptionText = data.description;
+          else if (Array.isArray(data.description) && data.description.length) {
+            // alguns retornos têm array com elementos com "text"
+            descriptionText = data.description.map(d => d.text || d.plain_text).filter(Boolean).join('\n\n');
+          } else if (data.description?.plain_text) descriptionText = data.description.plain_text;
+        } else if (data.descriptions && Array.isArray(data.descriptions) && data.descriptions.length) {
+          // fallback para campo "descriptions"
+          descriptionText = data.descriptions.map(d => d.text || d.plain_text).filter(Boolean).join('\n\n');
+        }
+
+        // Normaliza imagens
+        const pics = (data.pictures && data.pictures.length)
+          ? data.pictures.map(p => p.secure_url || p.url).filter(Boolean)
+          : (data.thumbnail ? [data.thumbnail] : []);
+
+        setProduct({
+          ...data,
+          description_text: descriptionText,
+          pictures: pics
+        });
+
+        setMainImage(pics[0] || data.thumbnail || null);
       } catch (err) {
         console.error('Erro ao buscar produto:', err);
+        setError(err.message || 'Erro desconhecido');
       } finally {
         setLoading(false);
       }
@@ -23,174 +60,99 @@ export default function ProductDetails() {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <Loading>Carregando detalhes...</Loading>;
-  if (!product || product.error) return <Error>Produto não encontrado 😢</Error>;
+  if (loading) return <S.Center>Carregando produto...</S.Center>;
+  if (error) return <S.CenterErro>Erro: {error}</S.CenterErro>;
+  if (!product) return <S.CenterErro>Produto não encontrado</S.CenterErro>;
 
   return (
-    <Container>
-      <BackLink to="/">← Voltar</BackLink>
+    <S.Container>
+      <S.TopRow>
+        <Link to="/" style={{ textDecoration: 'none' }}>← Voltar</Link>
+      </S.TopRow>
 
-      <DetailsWrapper>
-        <ImageSection>
-          <MainImage
-            src={product.pictures?.[0]?.url || product.thumbnail}
-            alt={product.title}
-          />
-          <Thumbs>
-            {product.pictures?.slice(0, 5).map((pic) => (
-              <Thumb key={pic.id} src={pic.url} alt={product.title} />
+      <S.DetailsWrapper>
+        <S.ImageSection>
+          <S.MainImage src={mainImage || '/placeholder.png'} alt={product.title} />
+
+          {product.pictures && product.pictures.length > 0 && (
+            <S.Thumbs>
+              {product.pictures.map((src, idx) => (
+                <S.Thumb
+                  key={idx}
+                  src={src}
+                  alt={`${product.title} ${idx + 1}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMainImage(src);
+                  }}
+                />
+              ))}
+            </S.Thumbs>
+          )}
+        </S.ImageSection>
+
+        <S.InfoSection>
+          <S.Title>{product.title}</S.Title>
+
+          <S.Price>
+            R$ {(Number(product.price) || 0).toFixed(2)}
+          </S.Price>
+
+          <S.Meta>
+            <span>{product.condition === 'used' ? 'Usado' : 'Novo'}</span>
+            <span> • </span>
+            <span>{product.available_quantity ?? '—'} disponíveis</span>
+            {product.category_id && <><span> • </span><span>{product.category_id}</span></>}
+          </S.Meta>
+
+          <S.ButtonsRow>
+            <S.BuyButton
+              href={product.permalink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Comprar no Mercado Livre
+            </S.BuyButton>
+
+            <S.DetailsButton
+              onClick={() => {
+                // scroll pra descrição
+                const el = document.getElementById('product-description');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Ver descrição
+            </S.DetailsButton>
+          </S.ButtonsRow>
+
+          <S.SmallInfo>
+            <div><strong>Vendedor:</strong> {product.seller_id ?? '—'}</div>
+            <div><strong>SKU / ID:</strong> {product.id}</div>
+            {product.warranty && <div><strong>Garantia:</strong> {product.warranty}</div>}
+          </S.SmallInfo>
+        </S.InfoSection>
+      </S.DetailsWrapper>
+
+      <S.Description id="product-description">
+        <h2>Descrição</h2>
+        {product.description_text
+          ? product.description_text.split('\n').map((line, i) => <p key={i}>{line}</p>)
+          : <p>Sem descrição detalhada.</p>}
+      </S.Description>
+
+      {product.attributes && product.attributes.length > 0 && (
+        <S.Attributes>
+          <h3>Especificações</h3>
+          <S.AttrsGrid>
+            {product.attributes.map(attr => (
+              <div key={attr.id}>
+                <strong>{attr.name}</strong>
+                <div>{attr.value_name ?? (attr.values && attr.values[0] && attr.values[0].name) ?? '—'}</div>
+              </div>
             ))}
-          </Thumbs>
-        </ImageSection>
-
-        <InfoSection>
-          <h1>{product.title}</h1>
-          <Price>R$ {product.price?.toFixed(2)}</Price>
-          <Condition>
-            {product.condition === 'used' ? 'Usado' : 'Novo'} —{' '}
-            {product.available_quantity} disponíveis
-          </Condition>
-          <BuyButton
-            href={product.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Comprar no Mercado Livre
-          </BuyButton>
-        </InfoSection>
-      </DetailsWrapper>
-
-      {product.description && (
-        <Description>
-          <h2>Descrição</h2>
-          <p>{product.description}</p>
-        </Description>
+          </S.AttrsGrid>
+        </S.Attributes>
       )}
-    </Container>
+    </S.Container>
   );
 }
-
-// 🎨 ESTILOS
-const Container = styled.div`
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 1rem;
-`;
-
-const Loading = styled.p`
-  text-align: center;
-  color: #0d7377;
-`;
-
-const Error = styled.p`
-  text-align: center;
-  color: #dc2626;
-`;
-
-const BackLink = styled(Link)`
-  color: #0d7377;
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-block;
-  margin-bottom: 1rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const DetailsWrapper = styled.div`
-  display: flex;
-  gap: 2rem;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const ImageSection = styled.div`
-  flex: 1;
-`;
-
-const MainImage = styled.img`
-  width: 100%;
-  border-radius: 0.75rem;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
-`;
-
-const Thumbs = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  overflow-x: auto;
-`;
-
-const Thumb = styled.img`
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    border-color: #0d7377;
-  }
-`;
-
-const InfoSection = styled.div`
-  flex: 1;
-
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #1f2937;
-  }
-`;
-
-const Price = styled.p`
-  font-size: 2rem;
-  font-weight: bold;
-  color: #0d7377;
-  margin-bottom: 0.5rem;
-`;
-
-const Condition = styled.p`
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 1rem;
-`;
-
-const BuyButton = styled.a`
-  display: inline-block;
-  background: #0d7377;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    background: #14a085;
-  }
-`;
-
-const Description = styled.div`
-  margin-top: 2rem;
-
-  h2 {
-    color: #0d7377;
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    color: #374151;
-    line-height: 1.6;
-  }
-`;

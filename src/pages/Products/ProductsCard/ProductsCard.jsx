@@ -1,28 +1,28 @@
-import React from 'react';
-import * as S from './ProductsCard.syles';
+import React from "react";
+import * as S from "./ProductsCard.syles";
 
 export default function ProductCard({ product, onViewDetails }) {
   const handleCardClick = (e) => {
-    if (['BUTTON', 'A'].includes(e.target.tagName)) return;
+    if (["BUTTON", "A"].includes(e.target.tagName)) return;
     onViewDetails(product.id);
   };
 
-  const imageSrc = product.image || product.thumbnail || '/placeholder.png';
+  const imageSrc = product.image || product.thumbnail || "/placeholder.png";
 
   return (
     <S.CardContainer onClick={handleCardClick}>
       <S.ImageContainer>
         <S.ProductImage
           src={imageSrc}
-          alt={product.title || 'Produto'}
-          onError={(e) => (e.target.src = '/placeholder.png')}
+          alt={product.title || "Produto"}
+          onError={(e) => (e.target.src = "/placeholder.png")}
         />
         {product.featured && <S.FeaturedBadge>🔥 Destaque</S.FeaturedBadge>}
       </S.ImageContainer>
 
       <S.CardContent>
         <S.CategoryBadge>
-          {product.condition === 'used' ? 'Usado' : 'Novo'}
+          {product.condition === "used" ? "Usado" : "Novo"}
         </S.CategoryBadge>
 
         <S.ProductName>{product.title}</S.ProductName>
@@ -41,10 +41,10 @@ export default function ProductCard({ product, onViewDetails }) {
             Ver Detalhes
           </S.PrimaryButton>
 
-          {product.link && (
+          {product.permalink && (
             <S.SecondaryButton
               as="a"
-              href={product.link}
+              href={product.permalink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PageContainer = styled.div`
   min-height: 100vh;
@@ -45,11 +45,14 @@ export const FilterButton = styled.button`
   transition: all 0.2s;
   border: 1px solid #d1d5db;
 
-  ${props => props.active ? `
+  ${(props) =>
+    props.active
+      ? `
     background: #0d7377;
     color: white;
     border-color: #0d7377;
-  ` : `
+  `
+      : `
     background: white;
     color: #6b7280;
     

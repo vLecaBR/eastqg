@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import HomePage from './pages/Home/HomePage.jsx';
@@ -10,6 +16,8 @@ import QuotePage from './pages/Quote/QuotePage.jsx';
 import AboutPage from './pages/About/AboutPage.jsx';
 import ContactPage from './pages/Contact/ContactPage.jsx';
 import ProductsPage from './pages/Products/Products.jsx';
+import ProductDetails from './pages/Products/ProductDetails/ProductDetails.jsx';
+
 import { services } from './data/services.js';
 import { useLocalStorage } from './hooks/useLocalStorage.js';
 
@@ -24,27 +32,13 @@ const MainContent = styled.main`
 `;
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [selectedServiceId, setSelectedServiceId] = useState(null);
-
-  // localStorage states
+  // Estados locais via localStorage
   const [savedServices, setSavedServices] = useLocalStorage('savedServices', []);
   const [quote, setQuote] = useLocalStorage('quote', []);
   const [favoriteProducts, setFavoriteProducts] = useLocalStorage('favoriteProducts', []);
   const [cart, setCart] = useLocalStorage('cart', []);
 
-  // Navegação
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-    setSelectedServiceId(null);
-  };
-
-  // Serviços
-  const handleViewDetails = (serviceId) => {
-    setSelectedServiceId(serviceId);
-    setCurrentPage('service');
-  };
-
+  // Handlers para serviços
   const handleToggleSaved = (serviceId) => {
     setSavedServices(prev =>
       prev.includes(serviceId)
@@ -65,7 +59,7 @@ export default function App() {
     setQuote(prev => prev.filter(id => id !== serviceId));
   };
 
-  // Produtos
+  // Handlers de produtos
   const handleToggleFavoriteProduct = (productId) => {
     setFavoriteProducts(prev =>
       prev.includes(productId)
@@ -82,137 +76,101 @@ export default function App() {
     );
   };
 
-  // Voltar
-  const handleGoBack = () => {
-    setCurrentPage('home');
-    setSelectedServiceId(null);
-  };
-
-  // Serviço selecionado
-  const selectedService = selectedServiceId
-    ? services.find(s => s.id === selectedServiceId)
-    : null;
-
-  // Renderiza as páginas
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return (
-          <HomePage
-            services={services}
-            onViewDetails={handleViewDetails}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            onNavigate={handleNavigate}
-            savedServices={savedServices}
-            quote={quote}
-          />
-        );
-
-      case 'services':
-        return (
-          <ServicesPage
-            services={services}
-            onViewDetails={handleViewDetails}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            savedServices={savedServices}
-            quote={quote}
-          />
-        );
-
-      case 'service':
-        if (!selectedService)
-          return (
-            <div style={{ textAlign: 'center', padding: '3rem' }}>
-              <h1>Serviço não encontrado</h1>
-              <button
-                onClick={handleGoBack}
-                style={{ marginTop: '1rem', color: '#0d7377' }}
-              >
-                Voltar ao início
-              </button>
-            </div>
-          );
-
-        return (
-          <ServiceDetailPage
-            service={selectedService}
-            onGoBack={handleGoBack}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            isSaved={savedServices.includes(selectedService.id)}
-            isInQuote={quote.includes(selectedService.id)}
-          />
-        );
-
-      case 'products':
-        return (
-          <ProductsPage
-            favoriteProducts={favoriteProducts}
-            cart={cart}
-            onViewDetails={() => {}}
-            onToggleFavorite={handleToggleFavoriteProduct}
-            onAddToCart={handleAddToCart}
-          />
-        );
-
-
-      case 'saved':
-        return (
-          <SavedServicesPage
-            services={services}
-            savedServices={savedServices}
-            quote={quote}
-            onViewDetails={handleViewDetails}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            onNavigate={handleNavigate}
-          />
-        );
-
-      case 'quote':
-        return (
-          <QuotePage
-            services={services}
-            quote={quote}
-            onViewDetails={handleViewDetails}
-            onRemoveFromQuote={handleRemoveFromQuote}
-            onNavigate={handleNavigate}
-          />
-        );
-
-      case 'about':
-        return <AboutPage />;
-
-      case 'contact':
-        return <ContactPage />;
-
-      default:
-        return (
-          <HomePage
-            services={services}
-            onViewDetails={handleViewDetails}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            onNavigate={handleNavigate}
-            savedServices={savedServices}
-            quote={quote}
-          />
-        );
-    }
-  };
-
   return (
-    <AppContainer>
-      <Header
-        onNavigate={handleNavigate}
-        quoteCount={quote.length + cart.length}
-        savedCount={savedServices.length + favoriteProducts.length}
-        currentPage={currentPage}
-      />
-      <MainContent>{renderPage()}</MainContent>
-      <Footer />
-    </AppContainer>
+    <Router>
+      <AppContainer>
+        <Header
+          quoteCount={quote.length + cart.length}
+          savedCount={savedServices.length + favoriteProducts.length}
+        />
+        <MainContent>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  services={services}
+                  onToggleSaved={handleToggleSaved}
+                  onAddToQuote={handleAddToQuote}
+                  savedServices={savedServices}
+                  quote={quote}
+                />
+              }
+            />
+
+            <Route
+              path="/services"
+              element={
+                <ServicesPage
+                  services={services}
+                  onToggleSaved={handleToggleSaved}
+                  onAddToQuote={handleAddToQuote}
+                  savedServices={savedServices}
+                  quote={quote}
+                />
+              }
+            />
+
+            <Route
+              path="/service/:id"
+              element={
+                <ServiceDetailPage
+                  services={services}
+                  onToggleSaved={handleToggleSaved}
+                  onAddToQuote={handleAddToQuote}
+                  savedServices={savedServices}
+                  quote={quote}
+                />
+              }
+            />
+
+            <Route
+              path="/products"
+              element={
+                <ProductsPage
+                  favoriteProducts={favoriteProducts}
+                  cart={cart}
+                  onToggleFavorite={handleToggleFavoriteProduct}
+                  onAddToCart={handleAddToCart}
+                />
+              }
+            />
+
+            <Route
+              path="/product/:id"
+              element={<ProductDetails />}
+            />
+
+            <Route
+              path="/saved"
+              element={
+                <SavedServicesPage
+                  services={services}
+                  savedServices={savedServices}
+                  quote={quote}
+                  onToggleSaved={handleToggleSaved}
+                  onAddToQuote={handleAddToQuote}
+                />
+              }
+            />
+
+            <Route
+              path="/quote"
+              element={
+                <QuotePage
+                  services={services}
+                  quote={quote}
+                  onRemoveFromQuote={handleRemoveFromQuote}
+                />
+              }
+            />
+
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </MainContent>
+        <Footer />
+      </AppContainer>
+    </Router>
   );
 }

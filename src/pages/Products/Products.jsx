@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ProductCard from './ProductsCard/ProductsCard.jsx';
-import * as S from './Products.styles';
+import React, { useState, useEffect } from "react";
+import ProductCard from "./ProductsCard/ProductsCard.jsx";
+import * as S from "./Products.styles.js";
 
-export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToCart, favoriteProducts, cart }) {
+export default function ProductsPage({ onViewDetails }) {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,12 +12,12 @@ export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToC
     async function fetchProducts() {
       try {
         setLoading(true);
-        const res = await fetch('https://eastqg-backend-y6r1.onrender.com/api/products'); // ajusta a URL pro backend
-        if (!res.ok) throw new Error('Erro ao carregar produtos');
+        const res = await fetch("https://eastqg-backend-y6r1.onrender.com/api/products");
+        if (!res.ok) throw new Error("Erro ao carregar produtos");
         const data = await res.json();
         setProducts(Array.isArray(data) ? data : data.products || []);
       } catch (err) {
-        console.error('Erro ao carregar produtos:', err);
+        console.error("❌ Erro ao carregar produtos:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -27,20 +27,15 @@ export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToC
     fetchProducts();
   }, []);
 
-  const categories = ['Todos', ...new Set(products.map((p) => p.category))];
+  const categories = ["Todos", ...new Set(products.map((p) => p.category))];
 
   const filteredProducts =
-    selectedCategory === 'Todos'
+    selectedCategory === "Todos"
       ? products
       : products.filter((product) => product.category === selectedCategory);
 
-  if (loading) {
-    return <S.PageContainer>Carregando produtos...</S.PageContainer>;
-  }
-
-  if (error) {
-    return <S.PageContainer>Erro: {error}</S.PageContainer>;
-  }
+  if (loading) return <S.PageContainer>Carregando produtos...</S.PageContainer>;
+  if (error) return <S.PageContainer>Erro: {error}</S.PageContainer>;
 
   return (
     <S.PageContainer>
@@ -71,10 +66,6 @@ export default function ProductsPage({ onViewDetails, onToggleFavorite, onAddToC
                 key={product.id}
                 product={product}
                 onViewDetails={onViewDetails}
-                onToggleFavorite={onToggleFavorite}
-                onAddToCart={onAddToCart}
-                isFavorite={favoriteProducts.includes(product.id)}
-                isInCart={cart.includes(product.id)}
               />
             ))}
           </S.ProductsGrid>

@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import {
   HeaderContainer, TopBar, Container, MainNav, Logo, LogoIcon, LogoText,
-  DesktopNav, NavButton, ActionButtons, ActionButton, Badge,
-  MobileMenuButton, MobileMenu, CloseButton, MobileNavButtons, MobileNavButton
+  DesktopNav, NavButton, MobileMenuButton, MobileMenu, CloseButton,
+  MobileNavButtons, MobileNavButton
 } from './Header.styles';
+import { useNavigate } from 'react-router-dom';
 
-export default function Header({ onNavigate, quoteCount, savedCount, currentPage }) {
+export default function Header({ currentPage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  const handleNavigate = (page) => {
-    onNavigate(page);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
     setMobileMenuOpen(false);
   };
-  
+
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
@@ -25,28 +27,20 @@ export default function Header({ onNavigate, quoteCount, savedCount, currentPage
 
       <Container>
         <MainNav>
-          <Logo onClick={() => handleNavigate('home')}>
+          <Logo onClick={() => handleNavigate('/')}>
             <LogoIcon>E</LogoIcon>
             <LogoText>East</LogoText>
           </Logo>
 
           <DesktopNav>
-            <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('home')}>Início</NavButton>
-            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('products')}>Produtos</NavButton>
-            <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('services')}>Serviços</NavButton>
-            <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('about')}>Sobre</NavButton>
-            <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('contact')}>Contato</NavButton>
+            <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('/')}>Início</NavButton>
+            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('/products')}>Produtos</NavButton>
+            <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('/services')}>Serviços</NavButton>
+            <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('/about')}>Sobre</NavButton>
+            <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('/contact')}>Contato</NavButton>
           </DesktopNav>
 
-          <ActionButtons>
-            <ActionButton onClick={() => handleNavigate('saved')}>
-              ❤️ Salvos {savedCount > 0 && <Badge>{savedCount}</Badge>}
-            </ActionButton>
-            <ActionButton primary onClick={() => handleNavigate('quote')}>
-              💰 Orçamento {quoteCount > 0 && <Badge>{quoteCount}</Badge>}
-            </ActionButton>
-            <MobileMenuButton onClick={toggleMobileMenu}>☰</MobileMenuButton>
-          </ActionButtons>
+          <MobileMenuButton onClick={toggleMobileMenu}>☰</MobileMenuButton>
         </MainNav>
       </Container>
 
@@ -54,13 +48,11 @@ export default function Header({ onNavigate, quoteCount, savedCount, currentPage
         <MobileMenu>
           <CloseButton onClick={() => setMobileMenuOpen(false)}>×</CloseButton>
           <MobileNavButtons>
-            <MobileNavButton onClick={() => handleNavigate('home')}>Início</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('products')}>Produtos</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('services')}>Serviços</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('about')}>Sobre</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('contact')}>Contato</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('saved')}>❤️ Salvos ({savedCount})</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('quote')}>💰 Orçamento ({quoteCount})</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/')}>Início</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/products')}>Produtos</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/services')}>Serviços</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/about')}>Sobre</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/contact')}>Contato</MobileNavButton>
           </MobileNavButtons>
         </MobileMenu>
       )}
