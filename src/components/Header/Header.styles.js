@@ -57,6 +57,7 @@ export const LogoText = styled.h1`
 export const DesktopNav = styled.nav`
   display: none;
   gap: 2rem;
+    margin: 0 auto;
   @media (min-width: 768px) {
     display: flex;
   }
