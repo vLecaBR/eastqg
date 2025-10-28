@@ -67,7 +67,7 @@ export default function ProductDetails() {
   return (
     <S.Container>
       <S.TopRow>
-        <Link to="/" style={{ textDecoration: 'none' }}>← Voltar</Link>
+        <Link to="/products" style={{ textDecoration: 'none' }}>← Voltar</Link>
       </S.TopRow>
 
       <S.DetailsWrapper>
