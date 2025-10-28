@@ -8,8 +8,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  max-width: 350px; /* Limita o tamanho do card */
+  max-width: 350px;
   width: 100%;
 
   &:hover {
@@ -47,7 +46,6 @@ export const FeaturedBadge = styled.div`
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const CardContent = styled.div`
@@ -79,17 +77,6 @@ export const ProductName = styled.h3`
   }
 `;
 
-export const ProductLink = styled.a`
-  color: #0d7377;
-  font-size: 0.75rem;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 export const ProductInfo = styled.div`
   display: flex;
   justify-content: space-between;
@@ -106,54 +93,35 @@ export const Price = styled.div`
 `;
 
 export const ActionButtons = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
   margin-top: 0.75rem;
 `;
 
 export const PrimaryButton = styled.button`
-  flex: 1;
   background: #0d7377;
   color: white;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  text-align: center;
 
   &:hover {
     background: #14a085;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 `;
 
-export const IconButton = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 0.9rem;
-
-  background: ${(props) => {
-    if (props.favorite) return '#dc2626';
-    if (props.inCart) return '#059669';
-    return '#f3f4f6';
-  }};
-
-  color: ${(props) => (props.favorite || props.inCart ? 'white' : '#6b7280')};
-  border: ${(props) => (props.favorite || props.inCart ? 'none' : '1px solid #d1d5db')};
+export const SecondaryButton = styled(PrimaryButton)`
+  background: #f3f4f6;
+  color: #0d7377;
+  border: 1px solid #d1d5db;
 
   &:hover {
-    background: ${(props) => {
-      if (props.favorite) return '#b91c1c';
-      if (props.inCart) return '#047857';
-      return '#0d7377';
-    }};
+    background: #0d7377;
     color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 `;

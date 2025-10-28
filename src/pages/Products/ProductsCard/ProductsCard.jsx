@@ -1,21 +1,12 @@
 import React from 'react';
 import * as S from './ProductsCard.syles';
 
-export default function ProductCard({
-  product,
-  onViewDetails,
-  onToggleFavorite,
-  onAddToCart,
-  isFavorite,
-  isInCart,
-}) {
-  // Clique no card, mas ignora botões e links
+export default function ProductCard({ product, onViewDetails }) {
   const handleCardClick = (e) => {
     if (['BUTTON', 'A'].includes(e.target.tagName)) return;
     onViewDetails(product.id);
   };
 
-  // Fallback para imagem
   const imageSrc = product.image || product.thumbnail || '/placeholder.png';
 
   return (
@@ -36,17 +27,6 @@ export default function ProductCard({
 
         <S.ProductName>{product.title}</S.ProductName>
 
-        {product.link && (
-          <S.ProductLink
-            href={product.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Ver no Mercado Livre ↗
-          </S.ProductLink>
-        )}
-
         <S.ProductInfo>
           <S.Price>R$ {Number(product.price ?? 0).toFixed(2)}</S.Price>
         </S.ProductInfo>
@@ -61,27 +41,17 @@ export default function ProductCard({
             Ver Detalhes
           </S.PrimaryButton>
 
-          <S.IconButton
-            favorite={isFavorite}
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleFavorite(product.id);
-            }}
-            title={isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
-          >
-            {isFavorite ? '❤️' : '🤍'}
-          </S.IconButton>
-
-          <S.IconButton
-            inCart={isInCart}
-            onClick={(e) => {
-              e.stopPropagation();
-              onAddToCart(product.id);
-            }}
-            title={isInCart ? 'Remover do carrinho' : 'Adicionar ao carrinho'}
-          >
-            {isInCart ? '🛒' : '➕'}
-          </S.IconButton>
+          {product.link && (
+            <S.SecondaryButton
+              as="a"
+              href={product.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Comprar ↗
+            </S.SecondaryButton>
+          )}
         </S.ActionButtons>
       </S.CardContent>
     </S.CardContainer>
