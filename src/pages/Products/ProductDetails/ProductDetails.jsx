@@ -20,18 +20,12 @@ export default function ProductDetails() {
 
         const data = await res.json();
 
-        // Normaliza descrição e imagens
         const pics = (data.pictures && data.pictures.length)
           ? data.pictures.map(p => p.secure_url || p.url)
           : (data.thumbnail ? [data.thumbnail] : []);
 
-        const descriptionText = data.descriptions?.length
-          ? data.descriptions.map(d => d.text || d.plain_text).filter(Boolean).join('\n\n')
-          : 'Sem descrição detalhada.';
-
         setProduct({
           ...data,
-          description_text: descriptionText,
           pictures: pics,
         });
 
@@ -60,7 +54,6 @@ export default function ProductDetails() {
       <S.DetailsWrapper>
         <S.ImageSection>
           <S.MainImage src={mainImage || '/placeholder.png'} alt={product.title} />
-
           {product.pictures && product.pictures.length > 0 && (
             <S.Thumbs>
               {product.pictures.map((src, idx) => (
@@ -95,43 +88,18 @@ export default function ProductDetails() {
             >
               Comprar no Mercado Livre
             </S.BuyButton>
-
-            <S.DetailsButton
-              onClick={() => {
-                const el = document.getElementById('product-description');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Ver descrição
-            </S.DetailsButton>
           </S.ButtonsRow>
 
           <S.SmallInfo>
             <div><strong>Vendedor:</strong> {product.seller_id}</div>
             <div><strong>SKU / ID:</strong> {product.id}</div>
             {product.warranty && <div><strong>Garantia:</strong> {product.warranty}</div>}
+            <div><strong>Tempo de garantia:</strong> {product.warranty ? product.warranty : 'Sem garantia'}</div>
+            <div><strong>Tipo de listagem:</strong> {product.listing_type_id}</div>
+            <div><strong>Frete:</strong> {product.shipping.free_shipping ? 'Grátis' : 'Pago'}</div>
           </S.SmallInfo>
         </S.InfoSection>
       </S.DetailsWrapper>
-
-      <S.Description id="product-description">
-        <h2>Descrição</h2>
-        {product.description_text.split('\n').map((line, i) => <p key={i}>{line}</p>)}
-      </S.Description>
-
-      {product.attributes && product.attributes.length > 0 && (
-        <S.Attributes>
-          <h3>Especificações</h3>
-          <S.AttrsGrid>
-            {product.attributes.map(attr => (
-              <div key={attr.id}>
-                <strong>{attr.name}</strong>
-                <div>{attr.value_name ?? attr.values?.[0]?.name ?? '—'}</div>
-              </div>
-            ))}
-          </S.AttrsGrid>
-        </S.Attributes>
-      )}
     </S.Container>
   );
 }

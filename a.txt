@@ -1,0 +1,383 @@
+{
+  "id": "MLB5844608196",
+  "site_id": "MLB",
+  "title": "Filtro De Ar Cônico + Filtro De Respiro De Óleo Race Chrome",
+  "family_name": null,
+  "seller_id": 290679032,
+  "category_id": "MLB47119",
+  "user_product_id": "MLBU3509429957",
+  "official_store_id": null,
+  "price": 320,
+  "base_price": 320,
+  "original_price": null,
+  "inventory_id": null,
+  "currency_id": "BRL",
+  "initial_quantity": 1,
+  "available_quantity": 1,
+  "sold_quantity": 0,
+  "sale_terms": [
+    {
+      "id": "WARRANTY_TYPE",
+      "name": "Tipo de garantia",
+      "value_id": "2230280",
+      "value_name": "Garantia do vendedor",
+      "value_struct": null,
+      "values": [
+        {
+          "id": "2230280",
+          "name": "Garantia do vendedor",
+          "struct": null
+        }
+      ],
+      "value_type": "list"
+    },
+    {
+      "id": "WARRANTY_TIME",
+      "name": "Tempo de garantia",
+      "value_id": null,
+      "value_name": "20 dias",
+      "value_struct": {
+        "number": 20,
+        "unit": "dias"
+      },
+      "values": [
+        {
+          "id": null,
+          "name": "20 dias",
+          "struct": {
+            "number": 20,
+            "unit": "dias"
+          }
+        }
+      ],
+      "value_type": "number_unit"
+    }
+  ],
+  "buying_mode": "buy_it_now",
+  "listing_type_id": "free",
+  "start_time": "2025-10-24T11:21:52.590Z",
+  "stop_time": "2025-12-23T04:00:00.000Z",
+  "end_time": "2025-12-23T04:00:00.000Z",
+  "expiration_time": null,
+  "condition": "new",
+  "permalink": "https://produto.mercadolivre.com.br/MLB-5844608196-filtro-de-ar-cnico-filtro-de-respiro-de-oleo-race-chrome-_JM",
+  "thumbnail_id": "623081-MLB95698220278_102025",
+  "thumbnail": "http://http2.mlstatic.com/D_623081-MLB95698220278_102025-I.jpg",
+  "pictures": [
+    {
+      "id": "623081-MLB95698220278_102025",
+      "url": "http://http2.mlstatic.com/D_623081-MLB95698220278_102025-O.jpg",
+      "secure_url": "https://http2.mlstatic.com/D_623081-MLB95698220278_102025-O.jpg",
+      "size": "488x500",
+      "max_size": "1171x1198",
+      "quality": ""
+    },
+    {
+      "id": "633108-MLB96138976703_102025",
+      "url": "http://http2.mlstatic.com/D_633108-MLB96138976703_102025-O.jpg",
+      "secure_url": "https://http2.mlstatic.com/D_633108-MLB96138976703_102025-O.jpg",
+      "size": "466x500",
+      "max_size": "566x606",
+      "quality": ""
+    }
+  ],
+  "video_id": null,
+  "descriptions": [],
+  "accepts_mercadopago": true,
+  "non_mercado_pago_payment_methods": [],
+  "shipping": {
+    "mode": "me2",
+    "methods": [],
+    "tags": [],
+    "dimensions": null,
+    "local_pick_up": false,
+    "free_shipping": false,
+    "logistic_type": "drop_off",
+    "store_pick_up": false
+  },
+  "international_delivery_mode": "none",
+  "seller_address": {
+    "comment": "Q6 C3",
+    "address_line": "Rua Zilda de Souza Rizzi 951",
+    "zip_code": "14093010",
+    "city": {
+      "id": "BR-SP-23",
+      "name": "Ribeirão Preto"
+    },
+    "state": {
+      "id": "BR-SP",
+      "name": "São Paulo"
+    },
+    "country": {
+      "id": "BR",
+      "name": "Brasil"
+    },
+    "search_location": {
+      "neighborhood": {
+        "id": "TVhYSmFyZGltIEludGVybGFnb3NUVmhZVW1sa",
+        "name": "Jardim Interlagos"
+      },
+      "city": {
+        "id": "TVhYUmliZWlyw6NvIFByZXRvVFV4Q1VGTkJUM",
+        "name": "Ribeirão Preto"
+      },
+      "state": {
+        "id": "TUxCUFNBT085N2E4",
+        "name": "São Paulo"
+      }
+    },
+    "latitude": -21.19007,
+    "longitude": -47.751182,
+    "id": 1322819172
+  },
+  "seller_contact": null,
+  "location": {
+
+  },
+  "geolocation": {
+    "latitude": -21.19007,
+    "longitude": -47.751182
+  },
+  "coverage_areas": [],
+  "attributes": [
+    {
+      "id": "EMPTY_GTIN_REASON",
+      "name": "Motivo de GTIN vazio",
+      "value_id": "17055159",
+      "value_name": "O produto é um kit ou pack",
+      "values": [
+        {
+          "id": "17055159",
+          "name": "O produto é um kit ou pack",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "BRAND",
+      "name": "Marca",
+      "value_id": "18701077",
+      "value_name": "Race Chrome",
+      "values": [
+        {
+          "id": "18701077",
+          "name": "Race Chrome",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "CATALOG_TITLE",
+      "name": "Título de catálogo",
+      "value_id": null,
+      "value_name": "Filtro De Ar Cônico + Filtro De Respiro De Óleo Race Chrome",
+      "values": [
+        {
+          "id": null,
+          "name": "Filtro De Ar Cônico + Filtro De Respiro De Óleo Race Chrome",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "FILTER_SHAPE",
+      "name": "Forma do filtro",
+      "value_id": "19874529",
+      "value_name": "Cônico",
+      "values": [
+        {
+          "id": "19874529",
+          "name": "Cônico",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "HAS_COMPATIBILITIES",
+      "name": "Tem compatibilidades",
+      "value_id": "242085",
+      "value_name": "Sim",
+      "values": [
+        {
+          "id": "242085",
+          "name": "Sim",
+          "struct": null
+        }
+      ],
+      "value_type": "boolean"
+    },
+    {
+      "id": "INMETRO_CERTIFICATION_REGISTRATION_NUMBER",
+      "name": "Número de registro/certificação INMETRO",
+      "value_id": "-1",
+      "value_name": null,
+      "values": [
+        {
+          "id": "-1",
+          "name": null,
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "INPUT_DIAMETER",
+      "name": "Diâmetro de entrada",
+      "value_id": null,
+      "value_name": "60 mm",
+      "values": [
+        {
+          "id": null,
+          "name": "60 mm",
+          "struct": {
+            "number": 60,
+            "unit": "mm"
+          }
+        }
+      ],
+      "value_type": "number_unit"
+    },
+    {
+      "id": "ITEM_CONDITION",
+      "name": "Condição do item",
+      "value_id": "2230284",
+      "value_name": "Novo",
+      "values": [
+        {
+          "id": "2230284",
+          "name": "Novo",
+          "struct": null
+        }
+      ],
+      "value_type": "list"
+    },
+    {
+      "id": "MATERIAL",
+      "name": "Material",
+      "value_id": null,
+      "value_name": "Malha de algodão com estrutura metálica cromada",
+      "values": [
+        {
+          "id": null,
+          "name": "Malha de algodão com estrutura metálica cromada",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "MODEL",
+      "name": "Modelo",
+      "value_id": "-1",
+      "value_name": null,
+      "values": [
+        {
+          "id": "-1",
+          "name": null,
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "OEM",
+      "name": "Código OEM",
+      "value_id": "-1",
+      "value_name": null,
+      "values": [
+        {
+          "id": "-1",
+          "name": null,
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "ORIGIN",
+      "name": "Origem",
+      "value_id": "97214",
+      "value_name": "Brasil",
+      "values": [
+        {
+          "id": "97214",
+          "name": "Brasil",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "PACKS_NUMBER",
+      "name": "Quantidade de kits",
+      "value_id": null,
+      "value_name": "1",
+      "values": [
+        {
+          "id": null,
+          "name": "1",
+          "struct": null
+        }
+      ],
+      "value_type": "number"
+    },
+    {
+      "id": "PART_NUMBER",
+      "name": "Número de peça",
+      "value_id": "58631959",
+      "value_name": "RCI128",
+      "values": [
+        {
+          "id": "58631959",
+          "name": "RCI128",
+          "struct": null
+        }
+      ],
+      "value_type": "string"
+    },
+    {
+      "id": "VEHICLE_TYPE",
+      "name": "Tipo de veículo",
+      "value_id": "11377043",
+      "value_name": "Carro/Caminhonete",
+      "values": [
+        {
+          "id": "11377043",
+          "name": "Carro/Caminhonete",
+          "struct": null
+        }
+      ],
+      "value_type": "list"
+    }
+  ],
+  "warnings": [],
+  "listing_source": "",
+  "variations": [],
+  "status": "active",
+  "sub_status": [],
+  "tags": [
+    "good_quality_thumbnail",
+    "immediate_payment",
+    "cart_eligible"
+  ],
+  "warranty": "Garantia do vendedor: 20 dias",
+  "catalog_product_id": null,
+  "domain_id": "MLB-VEHICLE_AIR_FILTERS",
+  "seller_custom_field": null,
+  "parent_item_id": null,
+  "differential_pricing": null,
+  "deal_ids": [],
+  "automatic_relist": false,
+  "date_created": "2025-10-24T11:21:52.788Z",
+  "last_updated": "2025-10-24T15:12:34.091Z",
+  "health": null,
+  "catalog_listing": false,
+  "item_relations": [],
+  "channels": [
+    "marketplace"
+  ]
+}
