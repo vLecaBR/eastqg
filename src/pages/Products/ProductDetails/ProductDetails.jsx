@@ -17,7 +17,7 @@ export default function ProductDetails() {
 
       try {
         // Busca no teu backend (recomendo manter a rota /api/product/:id)
-        const res = await fetch(`/api/product/${id}`);
+        const res = await fetch(`https://eastqg-backend-y6r1.onrender.com/api/product/${id}`);
         if (!res.ok) throw new Error('Erro ao buscar produto');
         const data = await res.json();
 
