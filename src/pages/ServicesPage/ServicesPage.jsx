@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import ServiceCard from "./ServiceCard/ServiceCard.jsx";
 import * as S from "./ServicesPage.styles.js";
 
+// ícones react-icons
+import { FaTools, FaCar, FaOilCan } from "react-icons/fa";
+
 export default function ServicesPage({ services }) {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
@@ -11,6 +14,13 @@ export default function ServicesPage({ services }) {
     selectedCategory === "Todos"
       ? services
       : services.filter((s) => s.category === selectedCategory);
+
+  // opcional: associar ícones a categorias
+  const categoryIcons = {
+    "Todos": <FaCar />,
+    "Manutenção": <FaTools />,
+    "Óleo e Fluídos": <FaOilCan />,
+  };
 
   return (
     <S.PageContainer>
@@ -29,7 +39,7 @@ export default function ServicesPage({ services }) {
               active={selectedCategory === category}
               onClick={() => setSelectedCategory(category)}
             >
-              {category}
+              {categoryIcons[category] || <FaTools />} {category}
             </S.FilterButton>
           ))}
         </S.FilterSection>
