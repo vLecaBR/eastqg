@@ -132,34 +132,3 @@ export const PrimaryButton = styled.button`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 `;
-
-export const IconButton = styled.button`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
-
-  background: ${props => {
-    if (props.saved) return '#dc2626';
-    if (props.inQuote) return '#059669';
-    return '#f3f4f6';
-  }};
-
-  color: ${props => (props.saved || props.inQuote ? 'white' : '#6b7280')};
-  border: ${props => (props.saved || props.inQuote ? 'none' : '1px solid #d1d5db')};
-
-  &:hover {
-    background: ${props => {
-      if (props.saved) return '#b91c1c';
-      if (props.inQuote) return '#047857';
-      return '#0d7377';
-    }};
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-`;
