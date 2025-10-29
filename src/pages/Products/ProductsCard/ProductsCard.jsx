@@ -1,6 +1,9 @@
 import React from "react";
 import * as S from "./ProductsCard.syles";
 
+// ícones react-icons
+import { FaFire, FaExternalLinkAlt } from "react-icons/fa";
+
 export default function ProductCard({ product, onViewDetails }) {
   const handleCardClick = (e) => {
     if (["BUTTON", "A"].includes(e.target.tagName)) return;
@@ -17,7 +20,11 @@ export default function ProductCard({ product, onViewDetails }) {
           alt={product.title || "Produto"}
           onError={(e) => (e.target.src = "/placeholder.png")}
         />
-        {product.featured && <S.FeaturedBadge>🔥 Destaque</S.FeaturedBadge>}
+        {product.featured && (
+          <S.FeaturedBadge>
+            <FaFire style={{ marginRight: 4 }} /> Destaque
+          </S.FeaturedBadge>
+        )}
       </S.ImageContainer>
 
       <S.CardContent>
@@ -49,7 +56,7 @@ export default function ProductCard({ product, onViewDetails }) {
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
             >
-              Comprar ↗
+              Comprar <FaExternalLinkAlt style={{ marginLeft: 4 }} />
             </S.SecondaryButton>
           )}
         </S.ActionButtons>
