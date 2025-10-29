@@ -4,16 +4,16 @@ import {
   DesktopNav, NavButton, MobileMenuButton, MobileMenu, CloseButton,
   MobileNavButtons, MobileNavButton
 } from './Header.styles';
-import { useNavigate } from 'react-router-dom';
 
-// React Icons
-import { BsTelephone, BsEnvelope, BsClock } from 'react-icons/bs';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { AiOutlineHome, AiOutlineShop, AiOutlineTool, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function Header({ currentPage }) {
+// ícones do react-icons
+import { FaHome, FaBox, FaTools, FaInfoCircle, FaPhoneAlt, FaBars, FaTimes, FaCar } from 'react-icons/fa';
+
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigate = (path) => {
     navigate(path);
@@ -22,67 +22,73 @@ export default function Header({ currentPage }) {
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
+  const currentPath = location.pathname;
+
   return (
     <HeaderContainer>
       <TopBar>
-        <Container style={{ display: 'flex', justifyContent: 'center', gap: '1rem', fontSize: '0.875rem' }}>
-          <span><BsTelephone /> (11) 9999-9999</span>
-          <span><BsEnvelope /> contato@east.com.br</span>
-          <span><BsClock /> Seg-Sex 8h-18h, Sáb 8h-12h</span>
+        <Container>
+          <FaPhoneAlt style={{ marginRight: 6 }} /> (11) 9999-9999 &nbsp;|&nbsp;
+          📧 contato@east.com.br &nbsp;|&nbsp;
+          ⏰ Seg-Sex 8h-18h, Sáb 8h-12h
         </Container>
       </TopBar>
 
       <Container>
         <MainNav>
           <Logo onClick={() => handleNavigate('/')}>
-            <LogoIcon>E</LogoIcon>
+            <LogoIcon>
+              <FaCar />
+            </LogoIcon>
             <LogoText>East</LogoText>
           </Logo>
 
+          {/* NAV DESKTOP */}
           <DesktopNav>
-            <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('/')}>
-              <AiOutlineHome style={{ marginRight: '0.5rem' }} /> Início
+            <NavButton active={currentPath === '/'} onClick={() => handleNavigate('/')}>
+              <FaHome /> Início
             </NavButton>
-            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('/products')}>
-              <AiOutlineShop style={{ marginRight: '0.5rem' }} /> Produtos
+            <NavButton active={currentPath === '/products'} onClick={() => handleNavigate('/products')}>
+              <FaBox /> Produtos
             </NavButton>
-            <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('/services')}>
-              <AiOutlineTool style={{ marginRight: '0.5rem' }} /> Serviços
+            <NavButton active={currentPath === '/services'} onClick={() => handleNavigate('/services')}>
+              <FaTools /> Serviços
             </NavButton>
-            <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('/about')}>
-              <AiOutlineInfoCircle style={{ marginRight: '0.5rem' }} /> Sobre
+            <NavButton active={currentPath === '/about'} onClick={() => handleNavigate('/about')}>
+              <FaInfoCircle /> Sobre
             </NavButton>
-            <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('/contact')}>
-              <AiOutlineMail style={{ marginRight: '0.5rem' }} /> Contato
+            <NavButton active={currentPath === '/contact'} onClick={() => handleNavigate('/contact')}>
+              <FaPhoneAlt /> Contato
             </NavButton>
           </DesktopNav>
 
           <MobileMenuButton onClick={toggleMobileMenu}>
-            <HiMenu size={24} />
+            <FaBars />
           </MobileMenuButton>
         </MainNav>
       </Container>
 
+      {/* MENU MOBILE */}
       {mobileMenuOpen && (
         <MobileMenu>
           <CloseButton onClick={() => setMobileMenuOpen(false)}>
-            <HiX size={28} />
+            <FaTimes />
           </CloseButton>
           <MobileNavButtons>
             <MobileNavButton onClick={() => handleNavigate('/')}>
-              <AiOutlineHome style={{ marginRight: '0.5rem' }} /> Início
+              <FaHome /> Início
             </MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('/products')}>
-              <AiOutlineShop style={{ marginRight: '0.5rem' }} /> Produtos
+              <FaBox /> Produtos
             </MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('/services')}>
-              <AiOutlineTool style={{ marginRight: '0.5rem' }} /> Serviços
+              <FaTools /> Serviços
             </MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('/about')}>
-              <AiOutlineInfoCircle style={{ marginRight: '0.5rem' }} /> Sobre
+              <FaInfoCircle /> Sobre
             </MobileNavButton>
             <MobileNavButton onClick={() => handleNavigate('/contact')}>
-              <AiOutlineMail style={{ marginRight: '0.5rem' }} /> Contato
+              <FaPhoneAlt /> Contato
             </MobileNavButton>
           </MobileNavButtons>
         </MobileMenu>

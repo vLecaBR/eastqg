@@ -66,7 +66,7 @@ html, body {
   ::-webkit-scrollbar-thumb:hover {
     background: #14a085;
   }
-
+  
   /* Variáveis de tema */
   :root {
     --color-background: #ffffff;
