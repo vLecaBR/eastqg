@@ -2,23 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./ServiceCard.styles.js";
 
-export default function ServiceCard({
-  service,
-  onToggleSaved,
-  onAddToQuote,
-  isSaved,
-  isInQuote,
-}) {
+export default function ServiceCard({ service }) {
   const navigate = useNavigate();
 
-  const handleCardClick = (e) => {
-    // evita clicar em botão e acionar navegação
-    if (e.target.tagName === "BUTTON") return;
-    navigate(`/service/${service.id}`);
-  };
-
-  const handleViewDetails = (e) => {
-    e.stopPropagation();
+  const handleCardClick = () => {
     navigate(`/service/${service.id}`);
   };
 
@@ -40,31 +27,9 @@ export default function ServiceCard({
         </S.ServiceInfo>
 
         <S.ActionButtons>
-          <S.PrimaryButton onClick={handleViewDetails}>
+          <S.PrimaryButton onClick={handleCardClick}>
             Ver Detalhes
           </S.PrimaryButton>
-
-          <S.IconButton
-            saved={isSaved}
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleSaved(service.id);
-            }}
-            title={isSaved ? "Remover dos salvos" : "Salvar serviço"}
-          >
-            {isSaved ? "❤️" : "🤍"}
-          </S.IconButton>
-
-          <S.IconButton
-            inQuote={isInQuote}
-            onClick={(e) => {
-              e.stopPropagation();
-              onAddToQuote(service.id);
-            }}
-            title={isInQuote ? "Já no orçamento" : "Adicionar ao orçamento"}
-          >
-            {isInQuote ? "✅" : "💰"}
-          </S.IconButton>
         </S.ActionButtons>
       </S.CardContent>
     </S.CardContainer>
