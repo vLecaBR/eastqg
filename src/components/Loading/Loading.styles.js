@@ -10,9 +10,14 @@ export const LoadingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px; /* altura ajustável */
+  height: 50vh; /* ocupa metade da tela no mobile */
   text-align: center;
   padding: 25rem;
+
+  @media (min-width: 768px) {
+    height: 200px;
+    padding: 4rem;
+  }
 `;
 
 export const Spinner = styled.div`
@@ -23,9 +28,18 @@ export const Spinner = styled.div`
   height: 100px;
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const LoadingText = styled.p`
   color: #14a085;
   font-size: 1.325rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.325rem;
+  }
 `;
