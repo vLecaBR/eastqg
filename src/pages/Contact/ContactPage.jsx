@@ -6,6 +6,9 @@ import {
   MapTitle, MapPlaceholder, HoursSection, HoursTitle, HoursList, HoursItem, Day, Hours
 } from './Contact.styles';
 
+// react-icons
+import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+
 export default function ContactPage() {
   return (
     <PageContainer>
@@ -22,7 +25,7 @@ export default function ContactPage() {
             <InfoTitle>Informações de Contato</InfoTitle>
             <InfoList>
               <InfoItem>
-                <InfoIcon>📍</InfoIcon>
+                <InfoIcon><FaMapMarkerAlt /></InfoIcon>
                 <InfoContent>
                   <InfoLabel>Endereço</InfoLabel>
                   <InfoText>
@@ -33,32 +36,30 @@ export default function ContactPage() {
                 </InfoContent>
               </InfoItem>
               <InfoItem>
-                <InfoIcon>📞</InfoIcon>
+                <InfoIcon><FaPhoneAlt /></InfoIcon>
                 <InfoContent>
                   <InfoLabel>Telefone</InfoLabel>
                   <InfoText>(16) 3333-3333</InfoText>
                 </InfoContent>
               </InfoItem>
               <InfoItem>
-                <InfoIcon>💬</InfoIcon>
+                <InfoIcon><FaWhatsapp /></InfoIcon>
                 <InfoContent>
                   <InfoLabel>WhatsApp</InfoLabel>
                   <InfoText>(16) 99999-9999</InfoText>
                 </InfoContent>
               </InfoItem>
               <InfoItem>
-                <InfoIcon>📧</InfoIcon>
+                <InfoIcon><FaEnvelope /></InfoIcon>
                 <InfoContent>
                   <InfoLabel>E-mail</InfoLabel>
                   <InfoText>contato@east.com.br</InfoText>
                 </InfoContent>
               </InfoItem>
             </InfoList>
-
-          
           </ContactInfo>
 
-          {/* 🔹 Nova seção de ações rápidas */}
+          {/* 🔹 Ações rápidas */}
           <QuickActions>
             <h2>Atendimento Rápido</h2>
             <p>Escolha como prefere falar com a gente:</p>
@@ -68,11 +69,13 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               style={{ background: '#25D366' }}
             >
-              💬 Chamar no WhatsApp
+              <FaWhatsapp style={{ marginRight: '0.5rem' }} />
+              Chamar no WhatsApp
             </ActionButton>
 
             <ActionButton href="tel:+551633333333">
-              📞 Ligar Agora
+              <FaPhoneAlt style={{ marginRight: '0.5rem' }} />
+              Ligar Agora
             </ActionButton>
 
             <ActionButton
@@ -81,7 +84,8 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               style={{ background: '#2563EB' }}
             >
-              📍 Como Chegar
+              <FaMapMarkerAlt style={{ marginRight: '0.5rem' }} />
+              Como Chegar
             </ActionButton>
           </QuickActions>
         </ContactContent>
