@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard.jsx";
 import * as S from "./ServicesPage.styles.js";
 
-export default function ServicesPage({
-  services,
-  onToggleSaved,
-  onAddToQuote,
-  savedServices,
-  quote,
-}) {
+export default function ServicesPage({ services }) {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
   const categories = ["Todos", ...new Set(services.map((s) => s.category))];
@@ -43,14 +37,7 @@ export default function ServicesPage({
         {filteredServices.length > 0 ? (
           <S.ServicesGrid>
             {filteredServices.map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                onToggleSaved={onToggleSaved}
-                onAddToQuote={onAddToQuote}
-                isSaved={savedServices.includes(service.id)}
-                isInQuote={quote.includes(service.id)}
-              />
+              <ServiceCard key={service.id} service={service} />
             ))}
           </S.ServicesGrid>
         ) : (
