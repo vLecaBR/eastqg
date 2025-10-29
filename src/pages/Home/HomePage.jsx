@@ -1,13 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ServiceCard from '../ServicesPage/ServiceCard/ServiceCard.jsx';
 import * as S from './Home.styles.js';
 
-export default function HomePage({ services, onViewDetails, onNavigate }) {
+export default function HomePage({ services, onViewDetails }) {
+  const navigate = useNavigate(); // <-- pega do react-router
+
   const featuredServices = services.filter(s => s.popular).slice(0, 3);
 
   return (
     <S.PageContainer>
-      {/* Hero Section */}
       <S.HeroSection>
         <S.Container>
           <S.HeroTitle>East - Sua Oficina de Confiança</S.HeroTitle>
@@ -16,10 +18,10 @@ export default function HomePage({ services, onViewDetails, onNavigate }) {
             Manutenção preventiva e corretiva com garantia e preços justos.
           </S.HeroSubtitle>
           <S.HeroButtons>
-            <S.HeroButton primary onClick={() => onNavigate('services')}>
+            <S.HeroButton primary onClick={() => navigate('/services')}>
               Ver Todos os Serviços
             </S.HeroButton>
-            <S.HeroButton primary onClick={() => onNavigate('products')}>
+            <S.HeroButton primary onClick={() => navigate('/products')}>
               Ver Todos os Produtos
             </S.HeroButton>
           </S.HeroButtons>
