@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Loading.styles.js";
 
-export default function Loading({ message = "Carregando..." }) {
+export default function Loading({ message = "Carregando produtos..." }) {
   return (
     <S.LoadingContainer>
       <S.Spinner />

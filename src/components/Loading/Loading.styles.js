@@ -19,13 +19,13 @@ export const Spinner = styled.div`
   border: 4px solid rgba(255, 255, 255, 0.2);
   border-top: 4px solid #14a085;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1rem;
 `;
 
 export const LoadingText = styled.p`
-  color: #d1d5db;
-  font-size: 1rem;
+  color: #14a085;
+  font-size: 1.325rem;
 `;
