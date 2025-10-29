@@ -7,6 +7,9 @@ import {
   TeamSection, TeamGrid, TeamCard, TeamImage, TeamName, TeamRole, TeamDescription
 } from './About.styles';
 
+// react-icons
+import { FaBullseye, FaEye, FaStar, FaTools, FaBolt, FaWrench, FaUserTie } from 'react-icons/fa';
+
 export default function AboutPage() {
   return (
     <PageContainer>
@@ -84,7 +87,9 @@ export default function AboutPage() {
           
           <ValuesList>
             <ValueCard>
-              <ValueIcon>🎯</ValueIcon>
+              <ValueIcon>
+                <FaBullseye />
+              </ValueIcon>
               <ValueTitle>Missão</ValueTitle>
               <ValueDescription>
                 Oferecer serviços automotivos de excelência, garantindo a segurança e 
@@ -93,7 +98,9 @@ export default function AboutPage() {
             </ValueCard>
             
             <ValueCard>
-              <ValueIcon>👁️</ValueIcon>
+              <ValueIcon>
+                <FaEye />
+              </ValueIcon>
               <ValueTitle>Visão</ValueTitle>
               <ValueDescription>
                 Ser a oficina automotiva de referência na região, reconhecida pela 
@@ -102,7 +109,9 @@ export default function AboutPage() {
             </ValueCard>
             
             <ValueCard>
-              <ValueIcon>⭐</ValueIcon>
+              <ValueIcon>
+                <FaStar />
+              </ValueIcon>
               <ValueTitle>Valores</ValueTitle>
               <ValueDescription>
                 Transparência, qualidade, compromisso com prazos, preços justos, 
@@ -125,7 +134,9 @@ export default function AboutPage() {
             
             <TeamGrid>
               <TeamCard>
-                <TeamImage>🔧</TeamImage>
+                <TeamImage>
+                  <FaTools />
+                </TeamImage>
                 <TeamName>Carlos Silva</TeamName>
                 <TeamRole>Mecânico Chefe</TeamRole>
                 <TeamDescription>
@@ -134,7 +145,9 @@ export default function AboutPage() {
               </TeamCard>
               
               <TeamCard>
-                <TeamImage>⚡</TeamImage>
+                <TeamImage>
+                  <FaBolt />
+                </TeamImage>
                 <TeamName>Ana Santos</TeamName>
                 <TeamRole>Especialista em Eletrônica</TeamRole>
                 <TeamDescription>
@@ -143,7 +156,9 @@ export default function AboutPage() {
               </TeamCard>
               
               <TeamCard>
-                <TeamImage>🛠️</TeamImage>
+                <TeamImage>
+                  <FaWrench />
+                </TeamImage>
                 <TeamName>João Oliveira</TeamName>
                 <TeamRole>Técnico em Suspensão</TeamRole>
                 <TeamDescription>
@@ -152,7 +167,9 @@ export default function AboutPage() {
               </TeamCard>
               
               <TeamCard>
-                <TeamImage>🎯</TeamImage>
+                <TeamImage>
+                  <FaUserTie />
+                </TeamImage>
                 <TeamName>Maria Costa</TeamName>
                 <TeamRole>Atendimento ao Cliente</TeamRole>
                 <TeamDescription>
