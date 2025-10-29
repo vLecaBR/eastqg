@@ -8,6 +8,7 @@ import AboutPage from "../pages/About/AboutPage.jsx";
 import ContactPage from "../pages/Contact/ContactPage.jsx";
 import ProductsPage from "../pages/Products/Products.jsx";
 import ProductDetails from "../pages/Products/ProductDetails/ProductDetails.jsx";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop.jsx";
 
 export default function AppRoutes({
   services,
@@ -17,38 +18,32 @@ export default function AppRoutes({
   onAddToCart,
 }) {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<HomePage services={services} />}
-      />
+    <>
+      <ScrollToTop /> {/* ⬅ sempre sobe para o topo quando muda a rota */}
+      <Routes>
+        <Route path="/" element={<HomePage services={services} />} />
 
-      <Route
-        path="/services"
-        element={<ServicesPage services={services} />}
-      />
+        <Route path="/services" element={<ServicesPage services={services} />} />
 
-      <Route
-        path="/service/:id"
-        element={<ServiceDetailPage services={services} />}
-      />
+        <Route path="/service/:id" element={<ServiceDetailPage services={services} />} />
 
-      <Route
-        path="/products"
-        element={
-          <ProductsPage
-            favoriteProducts={favoriteProducts}
-            cart={cart}
-            onToggleFavorite={onToggleFavoriteProduct}
-            onAddToCart={onAddToCart}
-          />
-        }
-      />
+        <Route
+          path="/products"
+          element={
+            <ProductsPage
+              favoriteProducts={favoriteProducts}
+              cart={cart}
+              onToggleFavorite={onToggleFavoriteProduct}
+              onAddToCart={onAddToCart}
+            />
+          }
+        />
 
-      <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
 
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-    </Routes>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </>
   );
 }
