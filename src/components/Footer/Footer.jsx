@@ -6,9 +6,9 @@ import {
   Certifications, CertificationBadge
 } from './Footer.styles';
 
-// Importando os ícones do react-icons
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
-import { BsGeoAlt, BsTelephone, BsEnvelope, BsClock } from 'react-icons/bs';
+// React Icons
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube, FaCarSide, FaTools } from 'react-icons/fa';
+import { BsGeoAlt, BsTelephone, BsEnvelope, BsClock, BsCheckLg } from 'react-icons/bs';
 
 export default function Footer() {
   return (
@@ -58,14 +58,14 @@ export default function Footer() {
           <FooterSection>
             <FooterTitle>Serviços</FooterTitle>
             <ServiceList>
-              <li><ServiceLink>Troca de Óleo</ServiceLink></li>
-              <li><ServiceLink>Alinhamento e Balanceamento</ServiceLink></li>
-              <li><ServiceLink>Revisão Completa</ServiceLink></li>
-              <li><ServiceLink>Sistema de Freios</ServiceLink></li>
-              <li><ServiceLink>Ar Condicionado</ServiceLink></li>
-              <li><ServiceLink>Injeção Eletrônica</ServiceLink></li>
-              <li><ServiceLink>Suspensão</ServiceLink></li>
-              <li><ServiceLink>Sistema Elétrico</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Troca de Óleo</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Alinhamento e Balanceamento</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Revisão Completa</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Sistema de Freios</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Ar Condicionado</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Injeção Eletrônica</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Suspensão</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Sistema Elétrico</ServiceLink></li>
             </ServiceList>
           </FooterSection>
 
@@ -73,11 +73,11 @@ export default function Footer() {
           <FooterSection>
             <FooterTitle>Garantias</FooterTitle>
             <GuaranteeList>
-              <GuaranteeItem>✅ Garantia de 6 meses nos serviços</GuaranteeItem>
-              <GuaranteeItem>✅ Peças originais ou equivalentes</GuaranteeItem>
-              <GuaranteeItem>✅ Mão de obra especializada</GuaranteeItem>
-              <GuaranteeItem>✅ Orçamento sem compromisso</GuaranteeItem>
-              <GuaranteeItem>✅ Atendimento personalizado</GuaranteeItem>
+              <GuaranteeItem><BsCheckLg /> Garantia de 6 meses nos serviços</GuaranteeItem>
+              <GuaranteeItem><BsCheckLg /> Peças originais ou equivalentes</GuaranteeItem>
+              <GuaranteeItem><BsCheckLg /> Mão de obra especializada</GuaranteeItem>
+              <GuaranteeItem><BsCheckLg /> Orçamento sem compromisso</GuaranteeItem>
+              <GuaranteeItem><BsCheckLg /> Atendimento personalizado</GuaranteeItem>
             </GuaranteeList>
           </FooterSection>
         </FooterContent>
