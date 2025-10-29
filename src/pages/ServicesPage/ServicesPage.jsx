@@ -37,7 +37,9 @@ export default function ServicesPage({ services }) {
         {filteredServices.length > 0 ? (
           <S.ServicesGrid>
             {filteredServices.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+              <S.ServiceCardWrapper key={service.id}>
+                <ServiceCard service={service} />
+              </S.ServiceCardWrapper>
             ))}
           </S.ServicesGrid>
         ) : (

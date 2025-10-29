@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from "styled-components";
+
+// animação suave vindo de baixo
+const slideUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const PageContainer = styled.div`
   min-height: 100vh;
@@ -45,11 +57,14 @@ export const FilterButton = styled.button`
   transition: all 0.2s;
   border: 1px solid #d1d5db;
 
-  ${props => props.active ? `
+  ${props =>
+    props.active
+      ? `
     background: #0d7377;
     color: white;
     border-color: #0d7377;
-  ` : `
+  `
+      : `
     background: white;
     color: #6b7280;
     
@@ -65,10 +80,21 @@ export const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  justify-content: center; /* centraliza quando tem 1 card */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
+`;
+
+export const ServiceCardWrapper = styled.div`
+  animation: ${slideUp} 0.5s ease forwards;
+  animation-delay: ${props => props.index * 0.1}s; /* efeito staggered */
+  opacity: 0;
+
+  /* força tamanho mínimo consistente */
+  display: flex;
+  flex-direction: column;
 `;
 
 export const NoServices = styled.div`
