@@ -45,21 +45,22 @@ export default function Header() {
 
           {/* NAV DESKTOP */}
           <DesktopNav>
-            <NavButton active={currentPath === '/'} onClick={() => handleNavigate('/')}>
+            <NavButton $active={currentPath === '/'} onClick={() => handleNavigate('/')}>
               <FaHome /> Início
             </NavButton>
-            <NavButton active={currentPath === '/products'} onClick={() => handleNavigate('/products')}>
+            <NavButton $active={currentPath === '/products'} onClick={() => handleNavigate('/products')}>
               <FaBox /> Produtos
             </NavButton>
-            <NavButton active={currentPath === '/services'} onClick={() => handleNavigate('/services')}>
+            <NavButton $active={currentPath === '/services'} onClick={() => handleNavigate('/services')}>
               <FaTools /> Serviços
             </NavButton>
-            <NavButton active={currentPath === '/about'} onClick={() => handleNavigate('/about')}>
+            <NavButton $active={currentPath === '/about'} onClick={() => handleNavigate('/about')}>
               <FaInfoCircle /> Sobre
             </NavButton>
-            <NavButton active={currentPath === '/contact'} onClick={() => handleNavigate('/contact')}>
+            <NavButton $active={currentPath === '/contact'} onClick={() => handleNavigate('/contact')}>
               <FaPhoneAlt /> Contato
             </NavButton>
+
           </DesktopNav>
 
           <MobileMenuButton onClick={toggleMobileMenu}>

@@ -54,16 +54,17 @@ export default function ProductsPage({ favoriteProducts, cart, onToggleFavorite,
         </S.PageHeader>
 
         <S.FilterSection>
-          {categories.map((category) => (
-            <S.FilterButton
-              key={category}
-              active={selectedCategory === category}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </S.FilterButton>
-          ))}
-        </S.FilterSection>
+  {categories.map((category) => (
+    <S.FilterButton
+      key={category}
+      $active={selectedCategory === category} // <-- agora usa $
+      onClick={() => setSelectedCategory(category)}
+    >
+      {category}
+    </S.FilterButton>
+  ))}
+</S.FilterSection>
+
 
         {filteredProducts.length > 0 ? (
           <S.ProductsGrid>

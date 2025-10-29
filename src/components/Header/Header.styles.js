@@ -85,8 +85,8 @@ export const NavButton = styled.button`
   align-items: center;
   font-size: 1rem;
   gap: 0.5rem;
-  background: ${(props) => (props.active ? 'rgba(20, 160, 133, 0.2)' : 'transparent')};
-  color: ${(props) => (props.active ? '#14a085' : 'white')};
+  background: ${(props) => (props.$active ? 'rgba(20, 160, 133, 0.2)' : 'transparent')};
+  color: ${(props) => (props.$active ? '#14a085' : 'white')};
   border: none;
   cursor: pointer;
 
@@ -105,6 +105,7 @@ export const NavButton = styled.button`
     }
   }
 `;
+
 
 export const ActionButtons = styled.div`
   display: flex;

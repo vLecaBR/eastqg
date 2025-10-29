@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import * as S from './ProductDetails.styles';
 
+// react-icons
+import { FaArrowLeft, FaTag, FaBox, FaWarehouse, FaShippingFast, FaCertificate } from 'react-icons/fa';
+
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -48,7 +51,9 @@ export default function ProductDetails() {
   return (
     <S.Container>
       <S.TopRow>
-        <Link to="/products" style={{ textDecoration: 'none' }}>← Voltar</Link>
+        <Link to="/products" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <FaArrowLeft /> Voltar
+        </Link>
       </S.TopRow>
 
       <S.DetailsWrapper>
@@ -74,10 +79,10 @@ export default function ProductDetails() {
           <S.Price>R$ {Number(product.price).toFixed(2)}</S.Price>
 
           <S.Meta>
-            <span>{product.condition === 'used' ? 'Usado' : 'Novo'}</span>
+            <span><FaTag /> {product.condition === 'used' ? 'Usado' : 'Novo'}</span>
             <span> • </span>
-            <span>{product.available_quantity} disponíveis</span>
-            {product.category_id && <><span> • </span><span>{product.category_id}</span></>}
+            <span><FaBox /> {product.available_quantity} disponíveis</span>
+            {product.category_id && <><span> • </span><span><FaWarehouse /> {product.category_id}</span></>}
           </S.Meta>
 
           <S.ButtonsRow>
@@ -91,12 +96,12 @@ export default function ProductDetails() {
           </S.ButtonsRow>
 
           <S.SmallInfo>
-            <div><strong>Vendedor:</strong> {product.seller_id}</div>
-            <div><strong>SKU / ID:</strong> {product.id}</div>
-            {product.warranty && <div><strong>Garantia:</strong> {product.warranty}</div>}
-            <div><strong>Tempo de garantia:</strong> {product.warranty ? product.warranty : 'Sem garantia'}</div>
-            <div><strong>Tipo de listagem:</strong> {product.listing_type_id}</div>
-            <div><strong>Frete:</strong> {product.shipping.free_shipping ? 'Grátis' : 'Pago'}</div>
+            <div><FaCertificate /> <strong>Vendedor:</strong> {product.seller_id}</div>
+            <div><FaTag /> <strong>SKU / ID:</strong> {product.id}</div>
+            {product.warranty && <div><FaCertificate /> <strong>Garantia:</strong> {product.warranty}</div>}
+            <div><FaCertificate /> <strong>Tempo de garantia:</strong> {product.warranty ? product.warranty : 'Sem garantia'}</div>
+            <div><FaTag /> <strong>Tipo de listagem:</strong> {product.listing_type_id}</div>
+            <div><FaShippingFast /> <strong>Frete:</strong> {product.shipping.free_shipping ? 'Grátis' : 'Pago'}</div>
           </S.SmallInfo>
         </S.InfoSection>
       </S.DetailsWrapper>

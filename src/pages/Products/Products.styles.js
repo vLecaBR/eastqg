@@ -38,31 +38,23 @@ export const FilterSection = styled.div`
   justify-content: center;
 `;
 
+// Products.styles.js
 export const FilterButton = styled.button`
   padding: 0.5rem 1rem;
-  border-radius: 9999px;
+  border-radius: 0.375rem;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background: ${(props) => (props.$active ? '#14a085' : 'transparent')};
+  color: ${(props) => (props.$active ? 'white' : '#1f2937')};
   transition: all 0.2s;
-  border: 1px solid #d1d5db;
 
-  ${(props) =>
-    props.active
-      ? `
-    background: #0d7377;
+  &:hover {
+    background: #14a085;
     color: white;
-    border-color: #0d7377;
-  `
-      : `
-    background: white;
-    color: #6b7280;
-    
-    &:hover {
-      background: #f9fafb;
-      border-color: #0d7377;
-      color: #0d7377;
-    }
-  `}
+  }
 `;
+
 
 export const ProductsGrid = styled.div`
   display: grid;
