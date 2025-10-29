@@ -18,7 +18,7 @@ import ContactPage from './pages/Contact/ContactPage.jsx';
 import ProductsPage from './pages/Products/Products.jsx';
 import ProductDetails from './pages/Products/ProductDetails/ProductDetails.jsx';
 
-import { services } from './data/services.js';
+import { services } from './data/servicesData.js';
 import { useLocalStorage } from './hooks/useLocalStorage.js';
 
 const AppContainer = styled.div`
