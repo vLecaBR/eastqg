@@ -1,28 +1,39 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   background: #1f2937;
   color: white;
-  padding: 4rem 0;
+  padding: 2rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 1rem;
+  }
 `;
 
 export const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
 `;
 
 export const FooterContent = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
-  @media (max-width: 768px) {
+
+  @media (max-width: 640px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 `;
 
-export const FooterSection = styled.div``;
+export const FooterSection = styled.div`
+  @media (max-width: 640px) {
+    &:not(:first-child):not(:last-child) {
+      display: none;
+    }
+  }
+`;
 
 export const FooterTitle = styled.h3`
   color: #14a085;
@@ -52,8 +63,15 @@ export const SocialLink = styled.a`
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s;
+
   &:hover {
     background: #14a085;
+  }
+
+  svg {
+    color: white;
+    width: 1rem;
+    height: 1rem;
   }
 `;
 
@@ -90,6 +108,7 @@ export const ServiceLink = styled.a`
   color: #d1d5db;
   transition: color 0.2s;
   cursor: pointer;
+
   &:hover {
     color: #14a085;
   }
@@ -114,6 +133,7 @@ export const FooterBottom = styled.div`
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+
   @media (min-width: 640px) {
     flex-direction: row;
     justify-content: space-between;
@@ -128,6 +148,10 @@ export const Copyright = styled.p`
 export const Certifications = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const CertificationBadge = styled.span`

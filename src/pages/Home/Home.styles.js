@@ -166,6 +166,10 @@ export const StatsSection = styled.section`
   background: #1f2937;
   color: white;
   padding: 4rem 0;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const StatsGrid = styled.div`
