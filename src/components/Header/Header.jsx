@@ -6,6 +6,11 @@ import {
 } from './Header.styles';
 import { useNavigate } from 'react-router-dom';
 
+// React Icons
+import { BsTelephone, BsEnvelope, BsClock } from 'react-icons/bs';
+import { HiMenu, HiX } from 'react-icons/hi';
+import { AiOutlineHome, AiOutlineShop, AiOutlineTool, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai';
+
 export default function Header({ currentPage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -20,8 +25,10 @@ export default function Header({ currentPage }) {
   return (
     <HeaderContainer>
       <TopBar>
-        <Container>
-          📞 (11) 9999-9999 | 📧 contato@east.com.br | ⏰ Seg-Sex 8h-18h, Sáb 8h-12h
+        <Container style={{ display: 'flex', justifyContent: 'center', gap: '1rem', fontSize: '0.875rem' }}>
+          <span><BsTelephone /> (11) 9999-9999</span>
+          <span><BsEnvelope /> contato@east.com.br</span>
+          <span><BsClock /> Seg-Sex 8h-18h, Sáb 8h-12h</span>
         </Container>
       </TopBar>
 
@@ -33,26 +40,50 @@ export default function Header({ currentPage }) {
           </Logo>
 
           <DesktopNav>
-            <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('/')}>Início</NavButton>
-            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('/products')}>Produtos</NavButton>
-            <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('/services')}>Serviços</NavButton>
-            <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('/about')}>Sobre</NavButton>
-            <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('/contact')}>Contato</NavButton>
+            <NavButton active={currentPage === 'home'} onClick={() => handleNavigate('/')}>
+              <AiOutlineHome style={{ marginRight: '0.5rem' }} /> Início
+            </NavButton>
+            <NavButton active={currentPage === 'products'} onClick={() => handleNavigate('/products')}>
+              <AiOutlineShop style={{ marginRight: '0.5rem' }} /> Produtos
+            </NavButton>
+            <NavButton active={currentPage === 'services'} onClick={() => handleNavigate('/services')}>
+              <AiOutlineTool style={{ marginRight: '0.5rem' }} /> Serviços
+            </NavButton>
+            <NavButton active={currentPage === 'about'} onClick={() => handleNavigate('/about')}>
+              <AiOutlineInfoCircle style={{ marginRight: '0.5rem' }} /> Sobre
+            </NavButton>
+            <NavButton active={currentPage === 'contact'} onClick={() => handleNavigate('/contact')}>
+              <AiOutlineMail style={{ marginRight: '0.5rem' }} /> Contato
+            </NavButton>
           </DesktopNav>
 
-          <MobileMenuButton onClick={toggleMobileMenu}>☰</MobileMenuButton>
+          <MobileMenuButton onClick={toggleMobileMenu}>
+            <HiMenu size={24} />
+          </MobileMenuButton>
         </MainNav>
       </Container>
 
       {mobileMenuOpen && (
         <MobileMenu>
-          <CloseButton onClick={() => setMobileMenuOpen(false)}>×</CloseButton>
+          <CloseButton onClick={() => setMobileMenuOpen(false)}>
+            <HiX size={28} />
+          </CloseButton>
           <MobileNavButtons>
-            <MobileNavButton onClick={() => handleNavigate('/')}>Início</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('/products')}>Produtos</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('/services')}>Serviços</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('/about')}>Sobre</MobileNavButton>
-            <MobileNavButton onClick={() => handleNavigate('/contact')}>Contato</MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/')}>
+              <AiOutlineHome style={{ marginRight: '0.5rem' }} /> Início
+            </MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/products')}>
+              <AiOutlineShop style={{ marginRight: '0.5rem' }} /> Produtos
+            </MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/services')}>
+              <AiOutlineTool style={{ marginRight: '0.5rem' }} /> Serviços
+            </MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/about')}>
+              <AiOutlineInfoCircle style={{ marginRight: '0.5rem' }} /> Sobre
+            </MobileNavButton>
+            <MobileNavButton onClick={() => handleNavigate('/contact')}>
+              <AiOutlineMail style={{ marginRight: '0.5rem' }} /> Contato
+            </MobileNavButton>
           </MobileNavButtons>
         </MobileMenu>
       )}
