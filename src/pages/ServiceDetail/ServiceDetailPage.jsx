@@ -78,7 +78,7 @@ export default function ServiceDetailPage({ services }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                💬 Enviar para WhatsApp
+                💬 Solicitar orçamento no WhatsApp
               </S.PrimaryButton>
             </S.ActionButtons>
           </S.InfoSection>
