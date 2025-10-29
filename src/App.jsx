@@ -19,32 +19,10 @@ const MainContent = styled.main`
 `;
 
 export default function App() {
-  const [savedServices, setSavedServices] = useLocalStorage("savedServices", []);
-  const [quote, setQuote] = useLocalStorage("quote", []);
   const [favoriteProducts, setFavoriteProducts] = useLocalStorage("favoriteProducts", []);
   const [cart, setCart] = useLocalStorage("cart", []);
 
-  // Handlers
-  const handleToggleSaved = (serviceId) => {
-    setSavedServices((prev) =>
-      prev.includes(serviceId)
-        ? prev.filter((id) => id !== serviceId)
-        : [...prev, serviceId]
-    );
-  };
-
-  const handleAddToQuote = (serviceId) => {
-    setQuote((prev) =>
-      prev.includes(serviceId)
-        ? prev.filter((id) => id !== serviceId)
-        : [...prev, serviceId]
-    );
-  };
-
-  const handleRemoveFromQuote = (serviceId) => {
-    setQuote((prev) => prev.filter((id) => id !== serviceId));
-  };
-
+  // Handlers de produtos
   const handleToggleFavoriteProduct = (productId) => {
     setFavoriteProducts((prev) =>
       prev.includes(productId)
@@ -64,20 +42,12 @@ export default function App() {
   return (
     <Router>
       <AppContainer>
-        <Header
-          quoteCount={quote.length + cart.length}
-          savedCount={savedServices.length + favoriteProducts.length}
-        />
+        <Header/>
         <MainContent>
           <AppRoutes
             services={services}
-            savedServices={savedServices}
-            quote={quote}
             favoriteProducts={favoriteProducts}
             cart={cart}
-            onToggleSaved={handleToggleSaved}
-            onAddToQuote={handleAddToQuote}
-            onRemoveFromQuote={handleRemoveFromQuote}
             onToggleFavoriteProduct={handleToggleFavoriteProduct}
             onAddToCart={handleAddToCart}
           />
