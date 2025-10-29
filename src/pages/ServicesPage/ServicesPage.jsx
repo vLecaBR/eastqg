@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import ServiceCard from '../ServiceCard/ServiceCard.jsx';
-import * as S from './ServicesPage.styles.js';
+import React, { useState } from "react";
+import ServiceCard from "../ServiceCard/ServiceCard.jsx";
+import * as S from "./ServicesPage.styles.js";
 
-export default function ServicesPage({ 
-  services, 
-  onViewDetails, 
-  onToggleSaved, 
-  onAddToQuote, 
-  savedServices, 
-  quote 
+export default function ServicesPage({
+  services,
+  onToggleSaved,
+  onAddToQuote,
+  savedServices,
+  quote,
 }) {
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
 
-  const categories = ['Todos', ...new Set(services.map(service => service.category))];
+  const categories = ["Todos", ...new Set(services.map((s) => s.category))];
 
-  const filteredServices = selectedCategory === 'Todos' 
-    ? services 
-    : services.filter(service => service.category === selectedCategory);
+  const filteredServices =
+    selectedCategory === "Todos"
+      ? services
+      : services.filter((s) => s.category === selectedCategory);
 
   return (
     <S.PageContainer>
@@ -29,7 +29,7 @@ export default function ServicesPage({
         </S.PageHeader>
 
         <S.FilterSection>
-          {categories.map(category => (
+          {categories.map((category) => (
             <S.FilterButton
               key={category}
               active={selectedCategory === category}
@@ -42,11 +42,10 @@ export default function ServicesPage({
 
         {filteredServices.length > 0 ? (
           <S.ServicesGrid>
-            {filteredServices.map(service => (
+            {filteredServices.map((service) => (
               <ServiceCard
                 key={service.id}
                 service={service}
-                onViewDetails={onViewDetails}
                 onToggleSaved={onToggleSaved}
                 onAddToQuote={onAddToQuote}
                 isSaved={savedServices.includes(service.id)}
