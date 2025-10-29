@@ -12,6 +12,7 @@ export const LoadingContainer = styled.div`
   justify-content: center;
   height: 200px; /* altura ajustável */
   text-align: center;
+  padding: 25rem;
 `;
 
 export const Spinner = styled.div`
