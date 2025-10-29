@@ -2,15 +2,7 @@ import React from 'react';
 import ServiceCard from '../ServicesPage/ServiceCard/ServiceCard.jsx';
 import * as S from './Home.styles.js';
 
-export default function HomePage({ 
-  services, 
-  onViewDetails, 
-  onToggleSaved, 
-  onAddToQuote, 
-  onNavigate, 
-  savedServices, 
-  quote 
-}) {
+export default function HomePage({ services, onViewDetails, onNavigate }) {
   const featuredServices = services.filter(s => s.popular).slice(0, 3);
 
   return (
@@ -24,8 +16,12 @@ export default function HomePage({
             Manutenção preventiva e corretiva com garantia e preços justos.
           </S.HeroSubtitle>
           <S.HeroButtons>
-            <S.HeroButton primary onClick={() => onNavigate('services')}>Ver Todos os Serviços</S.HeroButton>
-            <S.HeroButton onClick={() => onNavigate('quote')}>Solicitar Orçamento</S.HeroButton>
+            <S.HeroButton primary onClick={() => onNavigate('services')}>
+              Ver Todos os Serviços
+            </S.HeroButton>
+            <S.HeroButton primary onClick={() => onNavigate('products')}>
+              Ver Todos os Produtos
+            </S.HeroButton>
           </S.HeroButtons>
         </S.Container>
       </S.HeroSection>
@@ -35,7 +31,9 @@ export default function HomePage({
         <S.Container>
           <S.SectionHeader>
             <S.SectionTitle>Serviços em Destaque</S.SectionTitle>
-            <S.SectionSubtitle>Nossos serviços mais procurados com qualidade garantida</S.SectionSubtitle>
+            <S.SectionSubtitle>
+              Nossos serviços mais procurados com qualidade garantida
+            </S.SectionSubtitle>
           </S.SectionHeader>
 
           <S.ServicesGrid>
@@ -44,10 +42,6 @@ export default function HomePage({
                 key={service.id}
                 service={service}
                 onViewDetails={onViewDetails}
-                onToggleSaved={onToggleSaved}
-                onAddToQuote={onAddToQuote}
-                isSaved={savedServices.includes(service.id)}
-                isInQuote={quote.includes(service.id)}
               />
             ))}
           </S.ServicesGrid>
@@ -59,7 +53,9 @@ export default function HomePage({
         <S.Container>
           <S.SectionHeader>
             <S.SectionTitle>Por que escolher a East?</S.SectionTitle>
-            <S.SectionSubtitle>Qualidade, confiança e atendimento personalizado</S.SectionSubtitle>
+            <S.SectionSubtitle>
+              Qualidade, confiança e atendimento personalizado
+            </S.SectionSubtitle>
           </S.SectionHeader>
 
           <S.FeaturesGrid>
