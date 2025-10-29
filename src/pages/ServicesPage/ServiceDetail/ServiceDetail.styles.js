@@ -16,15 +16,17 @@ export const BackButton = styled.button`
   align-items: center;
   gap: 0.5rem;
   color: #0d7377;
+  border: 2px solid #0d7377;
+  background-color: white;
   font-weight: 500;
   margin-bottom: 2rem;
   padding: 0.5rem;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   transition: all 0.2s;
 
   &:hover {
     background: #f0fdfa;
-    color: #14a085;
+    color: #0d7377;
   }
 `;
 

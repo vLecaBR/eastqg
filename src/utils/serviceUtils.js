@@ -67,18 +67,3 @@ export const getServiceCategories = (services) => {
   const categories = services.map(service => service.category);
   return ['all', ...new Set(categories)];
 };
-
-export const calculateQuoteTotal = (services, quoteIds, taxRate = 0.08) => {
-  const quoteServices = services.filter(service => quoteIds.includes(service.id));
-  const subtotal = quoteServices.reduce((sum, service) => sum + service.price, 0);
-  const tax = subtotal * taxRate;
-  const total = subtotal + tax;
-  
-  return {
-    services: quoteServices,
-    subtotal,
-    tax,
-    total,
-    count: quoteServices.length
-  };
-};
