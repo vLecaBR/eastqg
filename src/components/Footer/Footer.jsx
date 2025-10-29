@@ -6,6 +6,10 @@ import {
   Certifications, CertificationBadge
 } from './Footer.styles';
 
+// Importando os ícones do react-icons
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { BsGeoAlt, BsTelephone, BsEnvelope, BsClock } from 'react-icons/bs';
+
 export default function Footer() {
   return (
     <FooterContainer>
@@ -20,10 +24,10 @@ export default function Footer() {
               Oferecemos serviços especializados com qualidade e garantia.
             </FooterText>
             <SocialLinks>
-              <SocialLink href="#" title="Facebook">📘</SocialLink>
-              <SocialLink href="#" title="Instagram">📷</SocialLink>
-              <SocialLink href="#" title="WhatsApp">💬</SocialLink>
-              <SocialLink href="#" title="YouTube">📺</SocialLink>
+              <SocialLink href="#" title="Facebook"><FaFacebookF /></SocialLink>
+              <SocialLink href="#" title="Instagram"><FaInstagram /></SocialLink>
+              <SocialLink href="#" title="WhatsApp"><FaWhatsapp /></SocialLink>
+              <SocialLink href="#" title="YouTube"><FaYoutube /></SocialLink>
             </SocialLinks>
           </FooterSection>
 
@@ -31,10 +35,22 @@ export default function Footer() {
           <FooterSection>
             <FooterTitle>Contato</FooterTitle>
             <ContactInfo>
-              <ContactItem><ContactIcon>📍</ContactIcon><ContactText>Rua das Oficinas, 123 - São Paulo, SP</ContactText></ContactItem>
-              <ContactItem><ContactIcon>📞</ContactIcon><ContactText>(11) 9999-9999</ContactText></ContactItem>
-              <ContactItem><ContactIcon>📧</ContactIcon><ContactText>contato@east.com.br</ContactText></ContactItem>
-              <ContactItem><ContactIcon>⏰</ContactIcon><ContactText>Seg-Sex: 8h-18h | Sáb: 8h-12h</ContactText></ContactItem>
+              <ContactItem>
+                <ContactIcon><BsGeoAlt /></ContactIcon>
+                <ContactText>Rua das Oficinas, 123 - São Paulo, SP</ContactText>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon><BsTelephone /></ContactIcon>
+                <ContactText>(11) 9999-9999</ContactText>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon><BsEnvelope /></ContactIcon>
+                <ContactText>contato@east.com.br</ContactText>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon><BsClock /></ContactIcon>
+                <ContactText>Seg-Sex: 8h-18h | Sáb: 8h-12h</ContactText>
+              </ContactItem>
             </ContactInfo>
           </FooterSection>
 
