@@ -2,19 +2,22 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./ServiceDetail.styles.js";
 
+// ícones react-icons
+import { FaWhatsapp, FaCheck, FaStar, FaArrowLeft } from "react-icons/fa";
+
 export default function ServiceDetailPage({ services }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // busca o serviço pelo ID da URL
   const service = services.find((s) => s.id === Number(id));
 
-  // se não encontrar o serviço (id inválido)
   if (!service) {
     return (
       <S.PageContainer>
         <S.Container>
-          <S.BackButton onClick={() => navigate(-1)}>← Voltar</S.BackButton>
+          <S.BackButton onClick={() => navigate(-1)}>
+            <FaArrowLeft /> Voltar
+          </S.BackButton>
           <h2>Serviço não encontrado 😕</h2>
           <p>O serviço que você procurou não existe ou foi removido.</p>
         </S.Container>
@@ -22,8 +25,7 @@ export default function ServiceDetailPage({ services }) {
     );
   }
 
-  // mensagem e link do WhatsApp
-  const phoneNumber = "5581999999999"; // <-- coloca aqui o número da East no formato internacional
+  const phoneNumber = "5581999999999"; // número da East em formato internacional
   const message = `Olá East, vim do site, gostaria de fazer um orçamento para ${service.name}`;
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
@@ -32,12 +34,18 @@ export default function ServiceDetailPage({ services }) {
   return (
     <S.PageContainer>
       <S.Container>
-        <S.BackButton onClick={() => navigate(-1)}>← Voltar</S.BackButton>
+        <S.BackButton onClick={() => navigate(-1)}>
+          <FaArrowLeft /> Voltar
+        </S.BackButton>
 
         <S.ServiceContent>
           <S.ImageSection>
             <S.ServiceImage src={service.image} alt={service.name} />
-            {service.popular && <S.PopularBadge>⭐ Popular</S.PopularBadge>}
+            {service.popular && (
+              <S.PopularBadge>
+                <FaStar /> Popular
+              </S.PopularBadge>
+            )}
           </S.ImageSection>
 
           <S.InfoSection>
@@ -64,7 +72,9 @@ export default function ServiceDetailPage({ services }) {
               <S.FeaturesList>
                 {service.features.map((feature, index) => (
                   <S.FeatureItem key={index}>
-                    <S.FeatureIcon>✓</S.FeatureIcon>
+                    <S.FeatureIcon>
+                      <FaCheck />
+                    </S.FeatureIcon>
                     <span>{feature}</span>
                   </S.FeatureItem>
                 ))}
@@ -78,7 +88,7 @@ export default function ServiceDetailPage({ services }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                💬 Solicitar orçamento no WhatsApp
+                <FaWhatsapp /> Solicitar orçamento no WhatsApp
               </S.PrimaryButton>
             </S.ActionButtons>
           </S.InfoSection>
