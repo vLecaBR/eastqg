@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Saved.styles.js';
-import ServiceCard from '../ServiceCard/ServiceCard.jsx';
+import ServiceCard from '../ServicesPage/ServiceCard/ServiceCard.jsx';
 
 export default function SavedServicesPage({ 
   services, 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceCard from '../ServiceCard/ServiceCard.jsx';
+import ServiceCard from '../ServicesPage/ServiceCard/ServiceCard.jsx';
 import * as S from './Home.styles.js';
 
 export default function HomePage({ 

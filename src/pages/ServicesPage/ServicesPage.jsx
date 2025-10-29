@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ServiceCard from "../ServiceCard/ServiceCard.jsx";
+import ServiceCard from "./ServiceCard/ServiceCard.jsx";
 import * as S from "./ServicesPage.styles.js";
 
 export default function ServicesPage({ services }) {

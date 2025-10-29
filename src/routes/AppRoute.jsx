@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import HomePage from "../pages/Home/HomePage.jsx";
 import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
-import ServiceDetailPage from "../pages/ServiceDetail/ServiceDetailPage.jsx";
+import ServiceDetailPage from "../pages/ServicesPage/ServiceDetail/ServiceDetailPage.jsx";
 import SavedServicesPage from "../pages/SavedServices/SavedServicesPage.jsx";
 import QuotePage from "../pages/Quote/QuotePage.jsx";
 import AboutPage from "../pages/About/AboutPage.jsx";
