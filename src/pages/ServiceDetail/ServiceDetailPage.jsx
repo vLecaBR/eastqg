@@ -2,13 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as S from "./ServiceDetail.styles.js";
 
-export default function ServiceDetailPage({
-  services,
-  onToggleSaved,
-  onAddToQuote,
-  savedServices,
-  quote,
-}) {
+export default function ServiceDetailPage({ services }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -28,8 +22,12 @@ export default function ServiceDetailPage({
     );
   }
 
-  const isSaved = savedServices.includes(service.id);
-  const isInQuote = quote.includes(service.id);
+  // mensagem e link do WhatsApp
+  const phoneNumber = "5581999999999"; // <-- coloca aqui o número da East no formato internacional
+  const message = `Olá East, vim do site, gostaria de fazer um orçamento para ${service.name}`;
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
 
   return (
     <S.PageContainer>
@@ -75,19 +73,13 @@ export default function ServiceDetailPage({
 
             <S.ActionButtons>
               <S.PrimaryButton
-                onClick={() => onAddToQuote(service.id)}
-                disabled={isInQuote}
+                as="a"
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {isInQuote ? "Já no Orçamento ✓" : "Adicionar ao Orçamento 💰"}
+                💬 Enviar para WhatsApp
               </S.PrimaryButton>
-
-              <S.SecondaryButton
-                saved={isSaved}
-                inQuote={isInQuote}
-                onClick={() => onToggleSaved(service.id)}
-              >
-                {isSaved ? "❤️ Salvo" : "🤍 Salvar"}
-              </S.SecondaryButton>
             </S.ActionButtons>
           </S.InfoSection>
         </S.ServiceContent>
