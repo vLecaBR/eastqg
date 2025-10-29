@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./ServiceCard.styles.js";
 
+// ícones react-icons
+import { FaStar, FaClock } from "react-icons/fa";
+
 export default function ServiceCard({ service }) {
   const navigate = useNavigate();
 
@@ -13,7 +16,11 @@ export default function ServiceCard({ service }) {
     <S.CardContainer onClick={handleCardClick}>
       <S.ImageContainer>
         <S.ServiceImage src={service.image} alt={service.name} />
-        {service.popular && <S.PopularBadge>⭐ Popular</S.PopularBadge>}
+        {service.popular && (
+          <S.PopularBadge>
+            <FaStar /> Popular
+          </S.PopularBadge>
+        )}
       </S.ImageContainer>
 
       <S.CardContent>
@@ -23,7 +30,9 @@ export default function ServiceCard({ service }) {
 
         <S.ServiceInfo>
           <S.Price>R$ {service.price}</S.Price>
-          <S.Duration>⏱️ {service.duration}</S.Duration>
+          <S.Duration>
+            <FaClock /> {service.duration}
+          </S.Duration>
         </S.ServiceInfo>
 
         <S.ActionButtons>
