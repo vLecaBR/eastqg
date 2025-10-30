@@ -14,7 +14,7 @@ export default function HomePage({ services, onViewDetails }) {
         <S.Container>
           <S.HeroTitle>East - Sua Oficina de Confiança</S.HeroTitle>
           <S.HeroSubtitle>
-            Mais de 15 anos oferecendo serviços automotivos de qualidade. 
+            Mais de 10 anos oferecendo serviços automotivos de qualidade. 
             Manutenção preventiva e corretiva com garantia e preços justos.
           </S.HeroSubtitle>
           <S.HeroButtons>
