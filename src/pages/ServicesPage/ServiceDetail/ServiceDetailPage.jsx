@@ -25,7 +25,7 @@ export default function ServiceDetailPage({ services }) {
     );
   }
 
-  const phoneNumber = "5581999999999"; // número da East em formato internacional
+  const phoneNumber = "5516997957314"; // número da East em formato internacional
   const message = `Olá East, vim do site, gostaria de fazer um orçamento para ${service.name}`;
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message

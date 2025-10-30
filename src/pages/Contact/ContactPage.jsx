@@ -9,6 +9,12 @@ import {
 // react-icons
 import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 
+  const phoneNumber = "5516997957314"; // número da East em formato internacional
+  const message = `Olá East, vim do site, gostaria de fazer um orçamento`;
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
 export default function ContactPage() {
   return (
     <PageContainer>
@@ -36,24 +42,10 @@ export default function ContactPage() {
                 </InfoContent>
               </InfoItem>
               <InfoItem>
-                <InfoIcon><FaPhoneAlt /></InfoIcon>
-                <InfoContent>
-                  <InfoLabel>Telefone</InfoLabel>
-                  <InfoText>(16) 3333-3333</InfoText>
-                </InfoContent>
-              </InfoItem>
-              <InfoItem>
                 <InfoIcon><FaWhatsapp /></InfoIcon>
                 <InfoContent>
                   <InfoLabel>WhatsApp</InfoLabel>
-                  <InfoText>(16) 99999-9999</InfoText>
-                </InfoContent>
-              </InfoItem>
-              <InfoItem>
-                <InfoIcon><FaEnvelope /></InfoIcon>
-                <InfoContent>
-                  <InfoLabel>E-mail</InfoLabel>
-                  <InfoText>contato@east.com.br</InfoText>
+                  <InfoText>(16) 99795-7314</InfoText>
                 </InfoContent>
               </InfoItem>
             </InfoList>
@@ -64,7 +56,7 @@ export default function ContactPage() {
             <h2>Atendimento Rápido</h2>
             <p>Escolha como prefere falar com a gente:</p>
             <ActionButton
-              href="https://wa.me/5516999999999"
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               style={{ background: '#25D366' }}
@@ -72,8 +64,7 @@ export default function ContactPage() {
               <FaWhatsapp style={{ marginRight: '0.5rem' }} />
               Chamar no WhatsApp
             </ActionButton>
-
-            <ActionButton href="tel:+551633333333">
+            <ActionButton href={phoneNumber}>
               <FaPhoneAlt style={{ marginRight: '0.5rem' }} />
               Ligar Agora
             </ActionButton>
