@@ -20,7 +20,7 @@ export default function Footer() {
           <FooterSection>
             <FooterTitle>East</FooterTitle>
             <FooterText>
-              Sua oficina de confiança com mais de 15 anos de experiência em manutenção automotiva. 
+              Sua oficina de confiança com mais de 10 anos de experiência em manutenção automotiva. 
               Oferecemos serviços especializados com qualidade e garantia.
             </FooterText>
             <SocialLinks>
@@ -37,11 +37,11 @@ export default function Footer() {
             <ContactInfo>
               <ContactItem>
                 <ContactIcon><BsGeoAlt /></ContactIcon>
-                <ContactText>Rua das Oficinas, 123 - São Paulo, SP</ContactText>
+                <ContactText>Rua São Paulo 1801 - Campos Elíseos, Ribeirão Preto - SP</ContactText>
               </ContactItem>
               <ContactItem>
                 <ContactIcon><BsTelephone /></ContactIcon>
-                <ContactText>(11) 9999-9999</ContactText>
+                <ContactText>(16) 99795-7314</ContactText>
               </ContactItem>
               <ContactItem>
                 <ContactIcon><BsEnvelope /></ContactIcon>
@@ -59,13 +59,13 @@ export default function Footer() {
             <FooterTitle>Serviços</FooterTitle>
             <ServiceList>
               <li><ServiceLink><FaTools /> Troca de Óleo</ServiceLink></li>
-              <li><ServiceLink><FaTools /> Alinhamento e Balanceamento</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Performance</ServiceLink></li>
               <li><ServiceLink><FaTools /> Revisão Completa</ServiceLink></li>
               <li><ServiceLink><FaTools /> Sistema de Freios</ServiceLink></li>
-              <li><ServiceLink><FaCarSide /> Ar Condicionado</ServiceLink></li>
-              <li><ServiceLink><FaCarSide /> Injeção Eletrônica</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Personalização</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Envelopamento</ServiceLink></li>
               <li><ServiceLink><FaCarSide /> Suspensão</ServiceLink></li>
-              <li><ServiceLink><FaCarSide /> Sistema Elétrico</ServiceLink></li>
+              <li><ServiceLink><FaCarSide /> Fabricação em INOX</ServiceLink></li>
             </ServiceList>
           </FooterSection>
 
@@ -84,7 +84,7 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <FooterBottom>
-          <Copyright>&copy; 2024 East. Todos os direitos reservados.</Copyright>
+          <Copyright>&copy; 2025 East. Todos os direitos reservados.</Copyright>
           <Certifications>
             <CertificationBadge>CERTIFIED</CertificationBadge>
             <CertificationBadge>ISO 9001</CertificationBadge>
