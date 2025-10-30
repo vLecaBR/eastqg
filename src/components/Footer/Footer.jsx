@@ -60,6 +60,7 @@ export default function Footer() {
             <ServiceList>
               <li><ServiceLink><FaTools /> Troca de Óleo</ServiceLink></li>
               <li><ServiceLink><FaTools /> Performance</ServiceLink></li>
+              <li><ServiceLink><FaTools /> Pintura</ServiceLink></li>
               <li><ServiceLink><FaTools /> Revisão Completa</ServiceLink></li>
               <li><ServiceLink><FaTools /> Sistema de Freios</ServiceLink></li>
               <li><ServiceLink><FaCarSide /> Personalização</ServiceLink></li>
