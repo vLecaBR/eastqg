@@ -137,10 +137,10 @@ export default function AboutPage() {
                 <TeamImage>
                   <FaTools />
                 </TeamImage>
-                <TeamName>Carlos Silva</TeamName>
-                <TeamRole>Mecânico Chefe</TeamRole>
+                <TeamName>Fabricio Malerbo</TeamName>
+                <TeamRole>Chefe da mecanica</TeamRole>
                 <TeamDescription>
-                  15 anos de experiência em mecânica geral e especialização em motores.
+                  10 anos de experiência em mecânica geral e especialização em personalização, envolopamento e pintura.
                 </TeamDescription>
               </TeamCard>
               
@@ -148,32 +148,10 @@ export default function AboutPage() {
                 <TeamImage>
                   <FaBolt />
                 </TeamImage>
-                <TeamName>Ana Santos</TeamName>
-                <TeamRole>Especialista em Eletrônica</TeamRole>
+                <TeamName>João Rozado</TeamName>
+                <TeamRole>Mecânico Chefe</TeamRole>
                 <TeamDescription>
-                  Certificada em sistemas eletrônicos automotivos e diagnósticos computadorizados.
-                </TeamDescription>
-              </TeamCard>
-              
-              <TeamCard>
-                <TeamImage>
-                  <FaWrench />
-                </TeamImage>
-                <TeamName>João Oliveira</TeamName>
-                <TeamRole>Técnico em Suspensão</TeamRole>
-                <TeamDescription>
-                  Especialista em sistemas de suspensão, freios e alinhamento de direção.
-                </TeamDescription>
-              </TeamCard>
-              
-              <TeamCard>
-                <TeamImage>
-                  <FaUserTie />
-                </TeamImage>
-                <TeamName>Maria Costa</TeamName>
-                <TeamRole>Atendimento ao Cliente</TeamRole>
-                <TeamDescription>
-                  Responsável pelo atendimento personalizado e acompanhamento dos serviços.
+                  10 anos de experiência em mecânica geral e especialização em motor.
                 </TeamDescription>
               </TeamCard>
             </TeamGrid>
