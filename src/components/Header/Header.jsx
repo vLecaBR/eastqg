@@ -28,7 +28,7 @@ export default function Header() {
     <HeaderContainer>
       <TopBar>
         <Container>
-          <FaPhoneAlt style={{ marginRight: 6 }} /> (11) 9999-9999 &nbsp;|&nbsp;
+          <FaPhoneAlt style={{ marginRight: 6 }} /> (16) 99795-7314 &nbsp;|&nbsp;
           📧 contato@east.com.br &nbsp;|&nbsp;
           ⏰ Seg-Sex 8h-18h, Sáb 8h-12h
         </Container>
