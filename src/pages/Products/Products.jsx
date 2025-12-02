@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductsCard/ProductsCard.jsx";
-import Loading from "../../components/Loading/Loading.jsx"; // import do componente de loading
+import Loading from "../../components/Loading/Loading.jsx";
 import * as S from "./Products.styles";
 
 export default function ProductsPage({ favoriteProducts, cart, onToggleFavorite, onAddToCart }) {
@@ -41,8 +41,8 @@ export default function ProductsPage({ favoriteProducts, cart, onToggleFavorite,
     navigate(`/product/${id}`);
   };
 
-  if (loading) return <Loading message="Carregando produtos..." />; // usa o loading
-  if (error) return <S.PageContainer>Erro: {error}</S.PageContainer>;
+  if (loading) return <Loading message="Carregando produtos..." />;
+  if (error) return <S.PageContainer><S.Container>Erro: {error}</S.Container></S.PageContainer>;
 
   return (
     <S.PageContainer>
@@ -58,7 +58,7 @@ export default function ProductsPage({ favoriteProducts, cart, onToggleFavorite,
           {categories.map((category) => (
             <S.FilterButton
               key={category}
-              $active={selectedCategory === category} // corrigido para $active
+              $active={selectedCategory === category}
               onClick={() => setSelectedCategory(category)}
             >
               {category}
@@ -83,7 +83,7 @@ export default function ProductsPage({ favoriteProducts, cart, onToggleFavorite,
         ) : (
           <S.NoProducts>
             <h3>Nenhum produto encontrado</h3>
-            <p>Tente selecionar outra categoria.</p>
+            <p>Tente selecionar outra categoria no filtro acima.</p>
           </S.NoProducts>
         )}
       </S.Container>
